@@ -21,5 +21,6 @@ public class ObjetosArteController {
         List<Consulta1Dto> resultList = this.service.getByTipoEClasse();
         ModelAndView mv = new ModelAndView("consulta1");
         mv.addObject("resultList", resultList);
+        return mv;
     }
 }
