@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org">
+<head th:include="_template :: head"></head>
+<body>
+<header th:include="_template :: menu(page)"></header>
+<h2 align="center"  style="background-color:#121212; color: white;
+font-family: Inconsolata">Detalhes de Compra de Objetos Permanentes no Período</h2>
+<td><a class="btn btn-sm btn-primary"
+       th:href="@{/permanentes/graficoConsulta3/)}">Ver Gráfico</a></td>
+<table class="table table-striped" >
+  <thead>
+  <tr>
+    <th scope="col">Id Objeto</th>
+    <th scope="col">Data Aquisição</th>
+    <th scope="col">Custo</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr th:each="obj : ${resultList}">
+    <th scope="row" th:text="${resultList.numObj5}"></th>
+    <td th:text="${{resultList.dataAquisicao}"></td>
+    <td th:text="${{resultList.custo}"></td>
+  </tr>
+  </tbody>
+</table>
+</body>
+</html>

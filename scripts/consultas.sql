@@ -22,7 +22,7 @@ full join permanentes pe on pe.numObj5 = oa.numId;
 -- 2. liste as colecoes com o maior numero de emprestimos por mes e por ano (maior quantidade de objetos emprestados?)
 
 -- 3. listagem da compra de objetos de arte por mes e por ano
-select CAST(SUM(pe.custo) as money) as custo_total,
+select CAST(SUM(pe.custo) as money) as custo_total, EXTRACT(month from pe.dataaquisicao) as numMes,
 CASE
 	WHEN EXTRACT(month from pe.dataaquisicao) = 1 THEN 'JANEIRO'
 	WHEN EXTRACT(month from pe.dataaquisicao) = 2 THEN 'FEVEREIRO'
@@ -39,8 +39,8 @@ CASE
 END as mes,
 EXTRACT(year from pe.dataaquisicao) as ano
 from permanentes pe
-group by EXTRACT(month from pe.dataaquisicao), ano
-order by EXTRACT(month from pe.dataaquisicao), ano;
+group by numMes, ano
+order by numMes, ano;
 
 -- simplificada skdksdks
 select CAST(SUM(pe.custo) as money) as custo_total, EXTRACT(month from pe.dataaquisicao) as mes,
@@ -57,3 +57,9 @@ from colecao co
 join emprestados e on e.nomeColPert = co.nomeCol
 group by co.nomeCol, mes, ano
 order by mes, ano;
+
+-- CONSULTAS COMPLEMENTARES-----------------------------------
+select *
+from permanentes pe
+WHERE EXTRACT(month from pe.dataaquisicao) = 5 and
+EXTRACT(year from pe.dataaquisicao) = 1977;

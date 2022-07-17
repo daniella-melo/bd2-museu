@@ -15,7 +15,7 @@ font-family: Inconsolata">Relatório de Objetos por Tipo e Classe: </h2>
   </tr>
   </thead>
   <tbody>
-  <tr th:each="autor : ${resultList}">
+  <tr th:each="obj : ${resultList}">
     <th scope="row" th:text="${resultList.idObj}"></th>
     <td th:text="${{resultList.titulo}"></td>
     <td th:text="${{resultList.tipo}"></td>
