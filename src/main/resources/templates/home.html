@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org">
+<head th:include="_template :: head"></head>
+<body>
+<header th:include="_template :: menu('home')"></header>
+<title>Livraria</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inconsolata">
+<style th:inline="text">
+.bgimg {
+    background: url([[@{/images/livraria.jpg}]])
+                no-repeat center center fixed;
+}
+body, html {
+  height: 100%;
+  font-family: "Inconsolata", sans-serif;
+}
+
+.bgimg {
+  background-position: center;
+  background-size: cover;
+  min-height: 75%;
+}
+
+.menu {
+  display: none;
+}
+</style>
+<!-- Header with image -->
+<header class="bgimg
+w3-display-container w3-grayscale-min" id="home">
+    <div class="w3-display-bottomleft w3-center w3-padding-large w3-hide-small">
+        <span class="w3-tag">Venha nos visitar</span>
+    </div>
+    <div class="w3-display-middle w3-center">
+        <span class="w3-text-white" style="font-size:90px">O<br>Museu</span>
+    </div>
+    <div class="w3-display-bottomright w3-center w3-padding-large">
+        <span class="w3-text-white">São Paulo - SP</span>
+    </div>
+</header>
+
+<!-- Add a background color and large text to the whole page -->
+<div class="w3-sand w3-grayscale w3-large">
+
+    <!-- About Container -->
+    <div class="w3-container" id="about">
+        <div class="w3-content" style="max-width:700px">
+            <h5 class="w3-center w3-padding-64"><span class="w3-tag w3-wide">SOBRE NÓS</span></h5>
+            <p>A Livraria foi criada para muito além de promover arte, pois buscamos ser um ambiente acolhedor, promovendo então a melhor experiência aos nossos vistantes</p>
+            <div class="w3-panel w3-leftbar w3-light-grey">
+                <p><i>“A arte diz o indizível; exprime o inexprimível, traduz o intraduzível..”</i></p>
+                <p>- Leonardo da Vinci</p>
+            </div>
+            <p><strong>Horário de Funcionamento:</strong> de Segunda à Sexta das 9h às 18h.</p>
+            <p><strong>Endereço:</strong> São Paulo - SP</p>
+        </div>
+    </div>
+    <!-- End page content -->
+</div>
+
+<script>
+// Tabbed Menu
+function openMenu(evt, menuName) {
+  var i, x, tablinks;
+  x = document.getElementsByClassName("menu");
+  for (i = 0; i < x.length; i++) {
+    x[i].style.display = "none";
+  }
+  tablinks = document.getElementsByClassName("tablink");
+  for (i = 0; i < x.length; i++) {
+    tablinks[i].className = tablinks[i].className.replace(" w3-dark-grey", "");
+  }
+  document.getElementById(menuName).style.display = "block";
+  evt.currentTarget.firstElementChild.className += " w3-dark-grey";
+}
+document.getElementById("myLink").click();
+</script>
+
+</body>
+</html>

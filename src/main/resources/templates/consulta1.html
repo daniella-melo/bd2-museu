@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org">
+<head th:include="_template :: head"></head>
+<body>
+<header th:include="_template :: menu(page)"></header>
+<h2 align="center"  style="background-color:#121212; color: white;
+font-family: Inconsolata">Relatório de Objetos por Tipo e Classe: </h2>
+<table class="table table-striped" >
+  <thead>
+  <tr>
+    <th scope="col">ID Objeto</th>
+    <th scope="col">Título</th>
+    <th scope="col">Tipo</th>
+    <th scope="col">Classe</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr th:each="autor : ${resultList}">
+    <th scope="row" th:text="${resultList.idObj}"></th>
+    <td th:text="${{resultList.titulo}"></td>
+    <td th:text="${{resultList.tipo}"></td>
+    <td th:text="${{resultList.classe}"></td>
+  </tr>
+  </tbody>
+</table>
+</body>
+</html>

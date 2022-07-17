@@ -10,8 +10,8 @@ import java.sql.Timestamp;
 public class Artista {
 
     @Id
-    @NotNull
     @Column(name = "Nome")
+    @NotNull
     private String nome;
 
     @NotNull
