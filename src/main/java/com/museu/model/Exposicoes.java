@@ -11,16 +11,17 @@ import javax.persistence.*;
 @Table(name="exposicoes")
 public class Exposicoes {
 
+    @Id
     @NotNull
-    @Column(name = "NomeExp")
+    @Column(name = "nomeexp")
     private String nomeExp;
 
     @NotNull
-    @Column(name = "DataInicio")
+    @Column(name = "datainicio")
     private Timestamp dataInicio;
 
     @NotNull
-    @Column(name = "DataFinal")
+    @Column(name = "datafinal")
     private Timestamp dataFinal;
 
     public Exposicoes(String nomeExp, Timestamp dataInicio, Timestamp dataFinal) {

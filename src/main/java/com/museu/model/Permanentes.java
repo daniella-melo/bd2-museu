@@ -15,19 +15,19 @@ public class Permanentes {
 
     @Id
     @NotNull
-    @Column(name = "NumObj5")
+    @Column(name = "numobj5")
     private int numObj5;
 
     @NotNull
-    @Column(name = "DataAquisicao")
+    @Column(name = "dataaquisicao")
     private Timestamp dataAquisicao;
 
     @NotNull
-    @Column(name = "EmExposicao")
+    @Column(name = "emexposicao")
     private Boolean emExposicao;
 
     @NotNull
-    @Column(name = "Custo")
+    @Column(name = "custo")
     private BigDecimal custo;
 
     public Permanentes(int numObj5, Timestamp dataAquisicao, Boolean emExposicao, BigDecimal custo) {

@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html>
 <head th:fragment="head">
-    <title>Livraria</title>
+    <title>Museu</title>
     <link rel="stylesheet" type="text/css"
           th:href="@{/webjars/bootstrap/4.5.0/css/bootstrap.min.css}">
     <!-- <link rel="stylesheet" type="text/css" th:href="@{~/css/bootstrap.css}"> -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
           integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <meta charset="UTF-8">
-    <title>Livraria</title>
+    <title>Museu</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
@@ -39,27 +39,15 @@ body, html {
                                          href="/home/" role="button" aria-haspopup="true"
                                          aria-expanded="false">HOME</a>
 
-        <li class="nav-item dropdown"><a class="nav-link dropdown-toggle"
-                                         data-toggle="dropdown" href="#" role="button" aria-haspopup="true"
-                                         aria-expanded="false">CADASTROS</a>
-            <div class="dropdown-menu">
-                <a class="dropdown-item" href="/livro/novo">Livro</a>
-                <a class="dropdown-item" href="/editora/nova">Editora</a>
-                <a class="dropdown-item" href="/autor/novo">Autor</a>
-                <a class="dropdown-item" href="/funcionario/novo">Funcionário</a>
-                <a class="dropdown-item" href="/compra/nova">Compra</a>
-            </div></li>
 
         <li class="nav-item dropdown"><a class="nav-link dropdown-toggle"
                                          data-toggle="dropdown" href="#" role="button" aria-haspopup="true"
-                                         aria-expanded="false">LISTAGEM E GERENCIAMENTO</a>
+                                         aria-expanded="false">LISTAGEM E RELATÓRIOS</a>
             <div class="dropdown-menu">
-                <a class="dropdown-item" href="/livro/todos/">Livro</a>
-                <a class="dropdown-item" href="/editora/todas">Editora</a>
-                <a class="dropdown-item" href="/autor/todos">Autores</a>
-                <a class="dropdown-item" href="/funcionario/todos">Funcionário</a>
-                <a class="dropdown-item" href="/compra/todas">Compras</a>
-                <a class="dropdown-item" href="/cliente/todos">Clientes</a>
+                <a class="dropdown-item" href="/objetos/consulta1/">Consulta 1</a>
+                <a class="dropdown-item" href="/home/">Consulta 2</a>
+                <a class="dropdown-item" href="/permanentes/consulta3/">Consulta 3</a>
+                <a class="dropdown-item" href="/home/">Consulta 4</a>
             </div></li>
     </ul>
 </nav>

@@ -5,48 +5,48 @@ import com.sun.istack.NotNull;
 import javax.persistence.*;
 
 @Entity
-@Table(name="objetos_arte")
+@Table(name="objetos_arte", schema = "bd2")
 public class ObjetosArte {
 
     @Id
     @NotNull
-    @Column(name = "NumId")
+    @Column(name = "numid")
     private int numId;
 
     @NotNull
-    @Column(name = "Titulo")
+    @Column(name = "titulo")
     private String titulo;
 
     @NotNull
-    @Column(name = "Descricao")
+    @Column(name = "descricao")
     private String descricao;
 
     @NotNull
-    @Column(name = "AnoCriacao")
+    @Column(name = "anocriacao")
     private String anoCriacao;
 
     @NotNull
-    @Column(name = "PeriodoObj")
+    @Column(name = "periodoobj")
     private String periodoObj;
 
     @NotNull
-    @Column(name = "PaisCultura")
+    @Column(name = "paiscultura")
     private String paisCultura;
 
     @NotNull
-    @Column(name = "Estilo")
+    @Column(name = "estilo")
     private String estilo;
 
     @NotNull
-    @Column(name = "TipoObjArt")
+    @Column(name = "tipoobjart")
     private String tipoObjArt;
 
     @NotNull
-    @Column(name = "CatObjArt")
+    @Column(name = "catobjart")
     private String catObjArt;
 
     @NotNull
-    @Column(name = "NomeArt")
+    @Column(name = "nomeart")
     private String nomeArt;
 
     public ObjetosArte(int numId, String titulo, String descricao, String anoCriacao, String periodoObj, String paisCultura, String estilo, String tipoObjArt, String catObjArt, String nomeArt) {

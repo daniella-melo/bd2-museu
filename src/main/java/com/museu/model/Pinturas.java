@@ -13,28 +13,28 @@ public class Pinturas {
 
     @Id
     @NotNull
-    @Column(name = "NumObj1")
-    private int numObj1;
+    @Column(name = "numobj1")
+    private Long numObj1;
 
     @NotNull
-    @Column(name = "TipoTinta")
+    @Column(name = "tipotinta")
     private String tipoTinta;
 
     @NotNull
-    @Column(name = "Suporte")
+    @Column(name = "suporte")
     private String suporte;
 
-    public Pinturas(int numObj1, String tipoTinta, String suporte) {
+    public Pinturas(Long numObj1, String tipoTinta, String suporte) {
         this.numObj1 = numObj1;
         this.tipoTinta = tipoTinta;
         this.suporte = suporte;
     }
 
-    public int getNumObj1() {
+    public Long getNumObj1() {
         return numObj1;
     }
 
-    public void setNumObj1(int numObj1) {
+    public void setNumObj1(Long numObj1) {
         this.numObj1 = numObj1;
     }
 

@@ -10,11 +10,11 @@ public class Outros {
 
     @Id
     @NotNull
-    @Column(name = "NumObj3")
+    @Column(name = "numobj3")
     private int numObj3;
 
     @NotNull
-    @Column(name = "Tipo")
+    @Column(name = "tipo")
     private String tipo;
 
     public Outros(int numObj3, String tipo) {

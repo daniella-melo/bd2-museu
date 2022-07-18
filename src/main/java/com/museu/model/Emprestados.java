@@ -14,20 +14,20 @@ public class Emprestados {
 
     @Id
     @NotNull
-    @Column(name = "NumObj4")
+    @Column(name = "numobj4")
     private int numObj4;
 
 
     @NotNull
-    @Column(name = "DataEmprestimo")
+    @Column(name = "dataemprestimo")
     private Timestamp dataEmprestimo;
 
     @NotNull
-    @Column(name = "DataDevolucao")
+    @Column(name = "datadevolucao")
     private Timestamp dataDevolucao;
 
     @NotNull
-    @Column(name = "NomeColPert")
+    @Column(name = "nomecolpert")
     private String nomeColPert;
 
     public Emprestados(int numObj4, Timestamp dataEmprestimo, Timestamp dataDevolucao, String nomeColPert) {
