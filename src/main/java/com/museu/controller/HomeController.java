@@ -13,5 +13,8 @@ public class HomeController {
     public String home() {
         return "home";
     }
+<<<<<<< HEAD
 
+=======
+>>>>>>> cf6d29a4fa3112e5243abba5cdfc6a0bb14e339c
 }
