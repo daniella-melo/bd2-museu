@@ -29,7 +29,7 @@ public interface PermanentesRepository extends JpaRepository<Permanentes, Intege
             "\tWHEN EXTRACT(month from pe.dataaquisicao) = 12 THEN 'DEZEMBRO'\n" +
             "END as mes,\n" +
             "EXTRACT(year from pe.dataaquisicao) as ano\n" +
-            "from permanentes pe\n" +
+            "from Permanentes pe\n" +
             "group by numMes, ano\n" +
             "order by numMes, ano;", nativeQuery = true)
     List<Consulta3Dto> listCompras();

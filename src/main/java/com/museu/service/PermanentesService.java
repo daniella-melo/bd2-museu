@@ -24,7 +24,7 @@ public class PermanentesService {
     public List<Permanentes> getByPeriod(int mes, int ano){
         TypedQuery<Permanentes> query = em.createQuery(
                 "select *\n" +
-                        "from permanentes pe\n" +
+                        "from Permanentes pe\n" +
                         "WHERE EXTRACT(month from pe.dataaquisicao) = " + mes +" and\n" +
                         "EXTRACT(year from pe.dataaquisicao) = " + ano, Permanentes.class);
         return query.getResultList();

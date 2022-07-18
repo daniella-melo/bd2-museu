@@ -25,7 +25,7 @@ public class ObjetosArteService {
 
     public List<Consulta1Dto> getConsulta1(){
         TypedQuery<Consulta1Dto> query = em.createQuery(
-                "select oa.numId as id_objeto, oa.titulo, oa.tipoObjArt as tipo, CASE WHEN e.numObj4 IS NULL then 'PERMANENTE' WHEN pe.numObj5 IS NULL then 'EMPRESTADO' ELSE 'OUTROS' END as classe from objetos_arte oa full join emprestados e on e.numObj4 = oa.numId full join permanentes pe on pe.numObj5 = oa.numId", Consulta1Dto.class);
+                "select oa.numId as id_objeto, oa.titulo, oa.tipoObjArt as tipo, CASE WHEN e.numObj4 IS NULL then 'PERMANENTE' WHEN pe.numObj5 IS NULL then 'EMPRESTADO' ELSE 'OUTROS' END as classe from ObjetosArte oa full join Emprestados e on e.numObj4 = oa.numId full join Permanentes pe on pe.numObj5 = oa.numId", Consulta1Dto.class);
         return query.getResultList();
     }
 }
