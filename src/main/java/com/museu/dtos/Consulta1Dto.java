@@ -1,5 +1,8 @@
 package com.museu.dtos;
 
+import org.springframework.stereotype.Component;
+
+@Component
 public class Consulta1Dto {
 
     private int idObj;

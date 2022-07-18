@@ -1,7 +1,10 @@
 package com.museu.dtos;
 
+import org.springframework.stereotype.Component;
+
 import java.math.BigDecimal;
 
+@Component
 public class Consulta3Dto {
 
     private BigDecimal custoTotal;
