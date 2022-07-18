@@ -20,6 +20,10 @@ full join permanentes pe on pe.numObj5 = oa.numId;
 
 
 -- 2. liste as colecoes com o maior numero de emprestimos por mes e por ano (maior quantidade de objetos emprestados?)
+select count(e.numObj4) qtd_total_objetos, co.nomecol from colecao co
+join emprestados e on e.nomecolpert = co.nomecol
+group by co.nomecol
+order by qtd_total_objetos desc;
 
 -- 3. listagem da compra de objetos de arte por mes e por ano
 select CAST(SUM(pe.custo) as money) as custo_total, EXTRACT(month from pe.dataaquisicao) as numMes,
