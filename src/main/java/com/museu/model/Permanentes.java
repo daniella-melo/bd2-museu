@@ -1,6 +1,6 @@
 package com.museu.model;
 
-import com.sun.istack.NotNull;
+import org.jetbrains.annotations.NotNull;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -15,26 +15,21 @@ public class Permanentes {
 
     @Id
     @NotNull
-    @Column(name = "NumObj5")
+    @Column(name = "numobj5")
     private int numObj5;
 
     @NotNull
-    @Column(name = "DataAquisicao")
+    @Column(name = "dataaquisicao")
     private Timestamp dataAquisicao;
 
     @NotNull
-    @Column(name = "EmExposicao")
+    @Column(name = "emexposicao")
     private Boolean emExposicao;
 
-    @NotNull
-    @Column(name = "Custo")
-    private BigDecimal custo;
-
-    public Permanentes(int numObj5, Timestamp dataAquisicao, Boolean emExposicao, BigDecimal custo) {
+    public Permanentes(int numObj5, Timestamp dataAquisicao, Boolean emExposicao) {
         this.numObj5 = numObj5;
         this.dataAquisicao = dataAquisicao;
         this.emExposicao = emExposicao;
-        this.custo = custo;
     }
 
     public int getNumObj5() {
@@ -59,13 +54,5 @@ public class Permanentes {
 
     public void setEmExposicao(Boolean emExposicao) {
         this.emExposicao = emExposicao;
-    }
-
-    public BigDecimal getCusto() {
-        return custo;
-    }
-
-    public void setCusto(BigDecimal custo) {
-        this.custo = custo;
     }
 }

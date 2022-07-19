@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org">
+<head th:include="_template :: head"></head>
+<body>
+<header th:include="_template :: menu(page)"></header>
+<h2 align="center"  style="background-color:#121212; color: white;
+font-family: Inconsolata">Lista de Clientes: </h2>
+<form th:action="@{/cliente/filtro}" method="POST" th:object="${filtroDto}">
+<div class="container pt-2" th:include="filtro :: menu(filtar)"></div>
+</form>
+<br>
+<table class="table table-striped" >
+  <thead>
+  <tr>
+    <th scope="col">Id Cliente</th>
+    <th scope="col">Nome</th>
+    <th scope="col">Email</th>
+    <th scope="col">Tipo</th>
+    <th scope="col">Documento Principal (CPF/CNPJ)</th>
+    <th scope="col">Documento Extra (RG/IE)</th>
+    <th scope="col">Ações</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr th:each="cliente : ${clienteList}">
+    <th scope="row" th:text="${cliente.idCliente}"></th>
+    <td th:text="${cliente.nome}"></td>
+    <td th:text="${cliente.email}"></td>
+    <td th:text="${cliente.tipo}"></td>
+    <td th:text="${cliente.docPrincipal}"></td>
+    <td th:text="${cliente.docExtra}"></td>
+    <td><a class="btn btn-sm btn-primary"
+          th:href="@{/cliente/editar/{id}(id=${cliente.idCliente})}">Editar</a>  <a
+          class="btn btn-sm btn-danger"
+          th:href="@{/cliente/deletar/{id}(id=${cliente.idCliente})}"
+          th:method="delete">Remover</a></td>
+  </tr>
+
+  </tbody>
+</table>
+</body>
+</html>

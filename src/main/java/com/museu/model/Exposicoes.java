@@ -1,26 +1,31 @@
 package com.museu.model;
 
-import com.sun.istack.NotNull;
+import org.jetbrains.annotations.NotNull;
 
 import javax.persistence.Column;
+import javax.persistence.*;
+
 import java.sql.Timestamp;
 
-import javax.persistence.*;
+import com.museu.id.ExposicoesId;
 
 @Entity
 @Table(name="exposicoes")
+@IdClass(ExposicoesId.class)
 public class Exposicoes {
 
+    @Id
     @NotNull
-    @Column(name = "NomeExp")
+    @Column(name = "nomeexp")
     private String nomeExp;
 
+    @Id
     @NotNull
-    @Column(name = "DataInicio")
+    @Column(name = "datainicio")
     private Timestamp dataInicio;
 
     @NotNull
-    @Column(name = "DataFinal")
+    @Column(name = "datafinal")
     private Timestamp dataFinal;
 
     public Exposicoes(String nomeExp, Timestamp dataInicio, Timestamp dataFinal) {

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org">
+<head th:include="_template :: head"></head>
+<body>
+<header th:include="_template :: menu(page)"></header>
+<h2 align="center"  style="background-color:#121212; color: white;
+font-family: Inconsolata">Lista de Autores: </h2>
+<form th:action="@{/autor/filtro}" method="POST" th:object="${filtroDto}">
+<div class="container pt-2" th:include="filtro :: menu(filtar)"></div>
+</form>
+<br>
+<table class="table table-striped" >
+  <thead>
+  <tr>
+    <th scope="col">ID Autor(a)</th>
+    <th scope="col">Nome</th>
+    <th scope="col">Nacionalidade</th>
+    <th scope="col">Livros</th>
+    <th scope="col">Editar</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr th:each="autor : ${autorList}">
+    <th scope="row" th:text="${autor.idAutor}"></th>
+    <td th:text="${autor.nome}"></td>
+    <td th:text="${autor.nacionalidade}"></td>
+    <td><a th:href="@{/autor/livros/{id}(id=${autor.idAutor})}">Ver Livros</a></td>
+    <td><a class="btn btn-sm btn-primary"
+           th:href="@{/autor/editar/{id}(id=${autor.idAutor})}">Editar</a>
+      <!-- <a
+            class="btn btn-sm btn-danger"
+            th:href="@{/autor/deletar/{id}(id=${autor.idAutor})}"
+            th:method="delete">Remover</a></td> -->
+  </tr>
+  </tbody>
+</table>
+</body>
+</html>

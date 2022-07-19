@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org">
+<head th:include="_template :: head"></head>
+<body>
+<header th:include="_template :: menu(page)"></header>
+
+<div class="container pt-2">
+    <div class="card">
+        <div class="card-body">
+            <h2 align="center"  style="background-color:#121212; color: white;
+            font-family: Inconsolata">Formulário de Livro</h2>
+
+            <div th:if="${mensagem}" th:text="${mensagem}"></div>
+            <form th:action="@{/livro/form/save}" method="POST" th:object="${livroDto}">
+                <div class="form-group">
+                    <label class="hide" for="ISBN">ISBN</label> <input
+                        th:classappend="${#fields.hasErrors('ISBN')}? invalid"
+                        type="text" id="ISBN" name="ISBN" th:field="*{ISBN}"
+                        required="required" class="form-control" th:value="${livroDto?.ISBN}" > <span
+                        th:errors="*{ISBN}"></span>
+                </div>
+
+                <div class="form-group">
+                    <label class="hide" for="titulo">Título</label> <input
+                        th:classappend="${#fields.hasErrors('titulo')}? invalid"
+                        type="text" id="titulo" name="titulo" th:field="*{titulo}"
+                        required="required" class="form-control" th:value="${livroDto?.titulo}" > <span
+                        th:errors="*{titulo}"></span>
+                </div>
+
+                <div class="form-group">
+                    <label class="hide" for="edicao">Edição</label> <input
+                        th:classappend="${#fields.hasErrors('edicao')}? invalid"
+                        type="text" id="edicao" name="edicao" th:field="*{edicao}"
+                        required="required" class="form-control" th:value="${livroDto?.edicao}" > <span
+                        th:errors="*{edicao}"></span>
+                </div>
+
+                <div class="form-group">
+                    <label class="hide" for="genero">Gênero</label> <input
+                        th:classappend="${#fields.hasErrors('genero')}? invalid"
+                        type="text" id="genero" name="genero" th:field="*{genero}"
+                        required="required" class="form-control" th:value="${livroDto?.genero}" > <span
+                        th:errors="*{genero}"></span>
+                </div>
+
+                <div class="form-group">
+                    <label class="hide" for="idioma">Idioma</label> <input
+                        th:classappend="${#fields.hasErrors('idioma')}? invalid"
+                        type="text" id="idioma" name="idioma" th:field="*{idioma}"
+                        required="required" class="form-control" th:value="${livroDto?.idioma}" > <span
+                        th:errors="*{idioma}"></span>
+                </div>
+
+                <div class="form-group">
+                    <label class="hide" for="dataPublicacao">Data de Publicação</label> <input
+                        th:classappend="${#fields.hasErrors('dataPublicacao')}? invalid"
+                        type="text" id="dataPublicacao" name="dataPublicacao" th:field="*{dataPublicacao}"
+                        required="required" class="form-control" th:value="${livroDto?.dataPublicacao}" > <span
+                        th:errors="*{dataPublicacao}"></span>
+                </div>
+
+                <!--ADICIONAR ATOR PELA RELAÇÃO ESCRITO POR-->
+                <div class="form-group">
+                    <label class="hide" for="autores">Autores(as) (separe os nomes por vírgula, sem espaço entre elas)</label>
+                    <input th:classappend="${#fields.hasErrors('autores')}? invalid"
+                           type="text" id="autores" name="autores" th:field="*{autores}"
+                           required="required" class="form-control" th:value="${livroDto?.autores}"> <span
+                        th:errors="*{autores}"></span>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label class="hide" for="preco">Preço (usar . ao invés de , para as casas decimais)</label> <input
+                        th:classappend="${#fields.hasErrors('preco')}? invalid"
+                        type="text" id="preco" name="preco" th:field="*{preco}"
+                        required="required" class="form-control" th:value="${livroDto?.preco}" > <span
+                        th:errors="*{preco}"></span>
+                </div>
+
+                <div class="form-group">
+                    <label class="hide" for="quantidade">Quantidade</label> <input
+                        th:classappend="${#fields.hasErrors('quantidade')}? invalid"
+                        type="text" id="quantidade" name="quantidade" th:field="*{quantidade}"
+                        required="required" class="form-control" th:value="${livroDto?.quantidade}"> <span
+                        th:errors="*{quantidade}"></span>
+                </div>
+
+                <!--se a função do th:selected for verdadeira ele deixa selecionado-->
+                <div class="form-group">
+                    <label class="hide" for="editora">Editora</label>
+                    <select name="cnpjEditora" class="custom-select">
+                        <option th:each="editora : ${editoraList}"
+                                th:value="${editora?.cnpj}"
+                                th:text="${editora.nome}"
+                                th:selected="${editora.cnpj} == ${livroDto.cnpjEditora}"
+                        />
+                    </select>
+                </div>
+
+
+                <div class="form-group">
+                    <label class="hide" for="cpfFuncionario">Almoxarife</label>
+                    <select name="cpfFuncionario" class="custom-select">
+                        <option th:each="funcionario : ${funcionarioList}"
+                                th:value="${funcionario?.cpf}"
+                                th:text="${funcionario?.nome}"
+                        />
+                    </select>
+                </div>
+
+                <div class="form-buttons">
+                    <a class="btn btn-secondary" href="/livro/todos">Voltar</a>
+                    <button class="btn btn-success" value="Salvar">Cadastrar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

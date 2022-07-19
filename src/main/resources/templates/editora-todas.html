@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org">
+<head th:include="_template :: head"></head>
+<body>
+<header th:include="_template :: menu(page)"></header>
+<h2 align="center"  style="background-color:#121212; color: white;
+font-family: Inconsolata">Lista de Editoras: </h2>
+<form th:action="@{/editora/filtro}" method="POST" th:object="${filtroDto}">
+  <div class="container pt-2" th:include="filtro :: menu(filtar)"></div>
+</form>
+<br>
+  <table class="table table-striped" >
+    <thead>
+    <tr>
+      <th scope="col">CNPJ</th>
+      <th scope="col">Nome</th>
+      <th scope="col">Email</th>
+      <th scope="col">Livros</th>
+      <th scope="col">Editar</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="editora : ${editoraList}">
+      <th scope="row" th:text="${editora.cnpj}"></th>
+      <td th:text="${editora.nome}"></td>
+      <td th:text="${editora.email}"></td>
+      <td><a th:href="@{/editora/livros/{id}(id=${editora.cnpj})}">Ver Livros</a></td>
+      <td><a class="btn btn-sm btn-primary"
+             th:href="@{/editora/editar/{id}(id=${editora.cnpj})}">Editar</a>
+        <!--<a
+              class="btn btn-sm btn-danger"
+              th:href="@{/editora/deletar/{id}(id=${editora.cnpj})}"
+              th:method="delete">Remover</a></td>-->
+    </tr>
+    </tbody>
+  </table>
+</body>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org">
+<head th:include="_template :: head"></head>
+<body>
+<header th:include="_template :: menu(page)"></header>
+
+<div class="container pt-2">
+    <div class="card">
+        <div class="card-body">
+            <h2 align="center"  style="background-color:#121212; color: white;
+            font-family: Inconsolata">Formulário de Funcionário</h2>
+
+            <div th:if="${mensagem}" th:text="${mensagem}"></div>
+            <form th:action="@{/funcionario/form/save}" method="POST" th:object="${funcionario}">
+
+                <div class="form-group">
+                    <label class="hide" for="cpf">CPF</label> <input
+                        th:classappend="${#fields.hasErrors('cpf')}? invalid"
+                        type="text" id="cpf" name="cpf" th:field="*{cpf}"
+                        required="required" class="form-control" th:value="${funcionario?.cpf}" > <span
+                        th:errors="*{cpf}"></span>
+                </div>
+
+                <div class="form-group">
+                    <label class="hide" for="nome">Nome</label> <input
+                        th:classappend="${#fields.hasErrors('nome')}? invalid"
+                        type="text" id="nome" name="titulo" th:field="*{nome}"
+                        required="required" class="form-control" th:value="${funcionario?.nome}" > <span
+                        th:errors="*{nome}"></span>
+                </div>
+
+                <div class="form-group">
+                    <label class="hide" for="cargo">Cargo</label> <input
+                        th:classappend="${#fields.hasErrors('cargo')}? invalid"
+                        type="text" id="cargo" name="cargo" th:field="*{cargo}"
+                        required="required" class="form-control" th:value="${funcionario?.cargo}" > <span
+                        th:errors="*{cargo}"></span>
+                </div>
+
+                <div class="form-group">
+                    <label class="hide" for="cpfSupervisor">CPF do Supervisor</label> <input
+                        th:classappend="${#fields.hasErrors('cpfSupervisor')}? invalid"
+                        type="text" id="cpfSupervisor" name="cpfSupervisor" th:field="*{cpfSupervisor}"
+                        required="required" class="form-control" th:value="${funcionario?.cpfSupervisor}" > <span
+                        th:errors="*{cpfSupervisor}"></span>
+                </div>
+
+
+                <div class="form-buttons">
+                    <a class="btn btn-secondary" href="/funcionario/todos">Voltar</a>
+                    <button class="btn btn-success" value="Salvar">Cadastrar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

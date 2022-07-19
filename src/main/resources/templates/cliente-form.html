@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org">
+<head th:include="_template :: head"></head>
+<body>
+<header th:include="_template :: menu(page)"></header>
+
+<div class="container pt-2">
+    <div class="card">
+        <div class="card-body">
+            <h2 align="center"  style="background-color:#121212; color: white;
+            font-family: Inconsolata">Formulário de Cliente</h2>
+
+            <div th:if="${mensagem}" th:text="${mensagem}"></div>
+            <form th:action="@{/cliente/form/save}" method="POST" th:object="${cliente}">
+
+                <div class="form-group">
+                    <label class="hide" for="idCliente">ID Cliente</label> <input
+                        th:classappend="${#fields.hasErrors('idCliente')}? invalid"
+                        type="text" readonly id="idCliente" name="idCliente" th:field="*{idCliente}"
+                        required="required" class="form-control" th:value="${cliente?.idCliente}" > <span
+                        th:errors="*{idCliente}"></span>
+                </div>
+
+                <div class="form-group">
+                    <label class="hide" for="nome">Nome</label> <input
+                        th:classappend="${#fields.hasErrors('nome')}? invalid"R
+                        type="text" id="nome" name="titulo" th:field="*{nome}"
+                        required="required" class="form-control" th:value="${cliente?.nome}" > <span
+                        th:errors="*{nome}"></span>
+                </div>
+
+                <div class="form-group">
+                    <label class="hide" for="docPrincipal">Documento Principal</label> <input
+                        type="text" id="docPrincipal" name="docPrincipal" th:field="*{docPrincipal}"
+                        required="required" class="form-control" th:value="${cliente?.docPrincipal}" > <span
+                        th:errors="*{docPrincipal}"></span>
+                </div>
+
+                <div class="form-group">
+                    <label class="hide" for="docExtra">Documento Extra</label> <input
+                        th:classappend="${#fields.hasErrors('docExtra')}? invalid"
+                        type="text" id="docExtra" name="docExtra" th:field="*{docExtra}"
+                        required="required" class="form-control" th:value="${cliente?.docExtra}" > <span
+                        th:errors="*{docExtra}"></span>
+                </div>
+
+                <div class="form-group">
+                    <label class="hide" for="email">E-mail</label> <input
+                        th:classappend="${#fields.hasErrors('email')}? invalid"
+                        type="text" id="email" name="email" th:field="*{email}"
+                        required="required" class="form-control" th:value="${cliente?.email}" > <span
+                        th:errors="*{email}"></span>
+                </div>
+
+                <!--se a função do th:selected for verdadeira ele deixa selecionado-->
+                <div class="form-group">
+                    <label class="hide" for="tipo">Tipo <p style="color: #990000; font-family: Inconsolata"><b>(SEMPRE VERIFIQUE SE ESTÁ CONDIZENTE)</b></p></label>
+                    <select name="tipo" class="custom-select">
+                        <option th:each="tipo : ${tipoEnum}"
+                                th:value="${tipo}"
+                                th:text="${tipo}"
+                                th:selected="${tipo} == ${cliente?.tipo}"
+                        />
+                    </select>
+                </div>
+
+
+                <div class="form-buttons">
+                    <a class="btn btn-secondary" href="/cliente/todos">Voltar</a>
+                    <button class="btn btn-success" value="Salvar">Cadastrar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

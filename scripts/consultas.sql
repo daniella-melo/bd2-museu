@@ -18,8 +18,27 @@ from objetos_arte oa
 full join emprestados e on e.numObj4 = oa.numId
 full join permanentes pe on pe.numObj5 = oa.numId;
 
-
 -- 2. liste as colecoes com o maior numero de emprestimos por mes e por ano (maior quantidade de objetos emprestados?)
+SELECT MAX(sub.count), sub.mes
+from (select COUNT(e.nomecolpert) as count, e.nomecolpert, EXTRACT(month from e.dataemprestimo) as num_mes,
+CASE
+	WHEN EXTRACT(month from e.dataemprestimo) = 1 THEN 'JANEIRO'
+	WHEN EXTRACT(month from e.dataemprestimo) = 2 THEN 'FEVEREIRO'
+	WHEN EXTRACT(month from e.dataemprestimo) = 3 THEN 'MARÇO'
+	WHEN EXTRACT(month from e.dataemprestimo) = 4 THEN 'ABRIL'
+	WHEN EXTRACT(month from e.dataemprestimo) = 5 THEN 'MAIO'
+	WHEN EXTRACT(month from e.dataemprestimo) = 6 THEN 'JUNHO'
+	WHEN EXTRACT(month from e.dataemprestimo) = 7 THEN 'JULHO'
+	WHEN EXTRACT(month from e.dataemprestimo) = 8 THEN 'AGOSTO'
+	WHEN EXTRACT(month from e.dataemprestimo) = 9 THEN 'SETEMBRO'
+	WHEN EXTRACT(month from e.dataemprestimo) = 10 THEN 'OUTUBRO'
+	WHEN EXTRACT(month from e.dataemprestimo) = 11 THEN 'NOVEMBRO'
+	WHEN EXTRACT(month from e.dataemprestimo) = 12 THEN 'DEZEMBRO'
+END as mes
+from emprestados e
+group by num_mes, nomecolpert
+order by num_mes) as sub
+group by mes
 
 -- 3. listagem da compra de objetos de arte por mes e por ano
 select CAST(SUM(pe.custo) as money) as custo_total, EXTRACT(month from pe.dataaquisicao) as num_mes,

@@ -1,6 +1,6 @@
 package com.museu.model;
 
-import com.sun.istack.NotNull;
+import org.jetbrains.annotations.NotNull;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -13,15 +13,15 @@ public class Pinturas {
 
     @Id
     @NotNull
-    @Column(name = "NumObj1")
+    @Column(name = "numobj1")
     private int numObj1;
 
     @NotNull
-    @Column(name = "TipoTinta")
+    @Column(name = "tipotinta")
     private String tipoTinta;
 
     @NotNull
-    @Column(name = "Suporte")
+    @Column(name = "suporte")
     private String suporte;
 
     public Pinturas(int numObj1, String tipoTinta, String suporte) {

@@ -1,60 +1,36 @@
-package com.museu.model;
+package com.museu.dto;
 
 import org.jetbrains.annotations.NotNull;
 
 import javax.persistence.*;
+
 import java.math.BigDecimal;
 
-@Entity
-@Table(name="objetos_arte")
-public class ObjetosArte {
+public class ObjetosArteDto {
 
-    @Id
-    @NotNull
-    @Column(name = "numid")
     private int numId;
 
-    @NotNull
-    @Column(name = "titulo")
     private String titulo;
 
-    @NotNull
-    @Column(name = "descricao")
     private String descricao;
 
-    @NotNull
-    @Column(name = "anocriacao")
     private String anoCriacao;
 
-    @NotNull
-    @Column(name = "periodoobj")
     private String periodoObj;
 
-    @NotNull
-    @Column(name = "paiscultura")
     private String paisCultura;
 
-    @NotNull
-    @Column(name = "estilo")
     private String estilo;
 
-    @NotNull
-    @Column(name = "tipoobjart")
     private String tipoObjArt;
 
-    @NotNull
-    @Column(name = "catobjart")
     private String catObjArt;
 
-    @NotNull
-    @Column(name = "nomeart")
     private String nomeArt;
 
-    @NotNull
-    @Column(name = "custo")
     private BigDecimal custo;
 
-    public ObjetosArte(int numId, String titulo, String descricao, String anoCriacao, String periodoObj, String paisCultura, String estilo, String tipoObjArt, String catObjArt, String nomeArt, BigDecimal custo) {
+    public ObjetosArteDto(int numId, String titulo, String descricao, String anoCriacao, String periodoObj, String paisCultura, String estilo, String tipoObjArt, String catObjArt, String nomeArt, BigDecimal custo) {
         this.numId = numId;
         this.titulo = titulo;
         this.descricao = descricao;

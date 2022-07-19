@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org">
+<head th:include="_template :: head"></head>
+<body>
+<header th:include="_template :: menu(page)"></header>
+<h2 align="center"  style="background-color:#121212; color: white;
+font-family: Inconsolata">Lista de Compras: </h2>
+<form th:action="@{/compra/filtro}" method="POST" th:object="${filtroDto}">
+  <div class="container pt-2" th:include="filtro :: menu(filtar)"></div>
+</form>
+<br>
+<table class="table table-striped" >
+  <thead>
+  <tr>
+    <th scope="col">ID Compra</th>
+    <th scope="col">ID Cliente</th>
+    <th scope="col">ISBN Livro</th>
+    <th scope="col">CPF Funcionário</th>
+    <th scope="col">Data da Compra</th>
+    <th scope="col">Quantidade do Livro</th>
+    <th scope="col">Preço Total</th>
+    <th scope="col">Editar</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr th:each="compra : ${compraList}">
+    <th scope="row" th:text="${compra.idCompra}"></th>
+    <td><a th:href="@{/compra/cliente/{id}(id=${compra.idCliente})}" th:text="${compra.idCliente}"></a></td>
+    <td th:text="${compra.isbn}"></td>
+    <td th:text="${compra.cpfFuncionario}"></td>
+    <td th:text="${compra.dataCompra}"></td>
+    <td th:text="${compra.qtdPedidaLivro}"></td>
+    <td th:text="${compra.preco}"></td>
+    <td><a class="btn btn-sm btn-primary"
+           th:href="@{/compra/editar/{id}(id=${compra.idCompra})}">Editar</a>
+      <!-- <a
+            class="btn btn-sm btn-danger"
+            th:href="@{/compra/deletar/{id}(id=${compra.idCompra})}"
+            th:method="delete">Remover</a></td> -->
+  </tr>
+  </tbody>
+</table>
+</body>
+</html>

@@ -1,6 +1,6 @@
 package com.museu.model;
 
-import com.sun.istack.NotNull;
+import org.jetbrains.annotations.NotNull;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -13,27 +13,27 @@ public class Colecao {
 
     @Id
     @NotNull
-    @Column(name = "NomeCol")
+    @Column(name = "nomecol")
     private String nomeCol;
 
     @NotNull
-    @Column(name = "DescrCol")
+    @Column(name = "descrcol")
     private String descrCol;
 
     @NotNull
-    @Column(name = "Endereco")
+    @Column(name = "endereco")
     private String endereco;
 
     @NotNull
-    @Column(name = "Telefone")
+    @Column(name = "telefone")
     private String telefone;
 
     @NotNull
-    @Column(name = "PessoaContato")
+    @Column(name = "pessoacontato")
     private String pessoaContato;
 
     @NotNull
-    @Column(name = "TipoCol")
+    @Column(name = "tipocol")
     private String tipoCol;
 
     public Colecao(String nomeCol, String descrCol, String endereco, String telefone, String pessoaContato, String tipoCol) {

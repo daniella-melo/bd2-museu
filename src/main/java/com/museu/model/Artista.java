@@ -1,6 +1,6 @@
 package com.museu.model;
 
-import com.sun.istack.NotNull;
+import org.jetbrains.annotations.NotNull;
 
 import javax.persistence.*;
 import java.sql.Timestamp;
@@ -11,27 +11,27 @@ public class Artista {
 
     @Id
     @NotNull
-    @Column(name = "Nome")
+    @Column(name = "nome")
     private String nome;
 
     @NotNull
-    @Column(name = "DescrArtista")
+    @Column(name = "descrartista")
     private String descrArtista;
 
     @NotNull
-    @Column(name = "DataMorte")
+    @Column(name = "datamorte")
     private Timestamp dataMorte;
 
     @NotNull
-    @Column(name = "EstiloPrincipal")
+    @Column(name = "estiloprincipal")
     private String estiloPrincipal;
 
     @NotNull
-    @Column(name = "Periodo")
+    @Column(name = "periodo")
     private String periodo;
 
     @NotNull
-    @Column(name = "PaisdeOrigem")
+    @Column(name = "paisdeorigem")
     private String paisdeOrigem;
 
     public Artista(String nome, String descrArtista, Timestamp dataMorte, String estiloPrincipal, String periodo, String paisdeOrigem) {

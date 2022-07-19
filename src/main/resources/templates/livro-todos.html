@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org">
+<head th:include="_template :: head"></head>
+<body>
+<header th:include="_template :: menu(page)"></header>
+<h2 align="center"  style="background-color:#121212; color: white;
+font-family: Inconsolata">Lista de Livros: </h2>
+<form th:action="@{/livro/filtro}" method="POST" th:object="${filtroDto}">
+<div class="container pt-2" th:include="filtro :: menu(filtar)"></div>
+</form>
+<br>
+<table class="table table-striped" >
+  <thead>
+  <tr>
+    <th scope="col">ISBN</th>
+    <th scope="col">Título</th>
+    <th scope="col">Edição</th>
+    <th scope="col">Gênero</th>
+    <th scope="col">Idioma</th>
+    <th scope="col">Data de Publicação</th>
+    <th scope="col">Editora</th>
+    <th scope="col">Preço</th>
+    <th scope="col">Disponíveis</th>
+    <th scope="col">Editar</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr th:each="livro : ${livroList}">
+    <th scope="row" th:text="${livro.ISBN}"></th>
+    <td th:text="${livro.titulo}"></td>
+    <td th:text="${livro.edicao}"></td>
+    <td th:text="${livro.genero}"></td>
+    <td th:text="${livro.idioma}"></td>
+    <td th:text="${livro.dataPublicacao}"></td>
+    <td th:text="${livro.cnpjEditora}"></td>
+    <td th:text="${livro.preco}"></td>
+    <td th:text="${livro.quantidade}"></td>
+    <td><a class="btn btn-sm btn-primary"
+           th:href="@{/livro/editar/{id}(id=${livro.ISBN})}">Editar</a>
+      <!--<a
+            class="btn btn-sm btn-danger"
+            th:href="@{/livro/deletar/{id}(id=${livro.ISBN})}"
+            th:method="delete">Remover</a></td>-->
+  </tr>
+  </tbody>
+</table>
+</body>
+</html>

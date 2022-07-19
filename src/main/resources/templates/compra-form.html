@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org">
+<head th:include="_template :: head"></head>
+<body>
+<header th:include="_template :: menu(page)"></header>
+
+<div class="container pt-2">
+  <div class="card">
+    <div class="card-body">
+      <h2 align="center"  style="background-color:#121212; color: white;
+            font-family: Inconsolata">Formulário de compra</h2>
+
+      <div th:if="${mensagem}" th:text="${mensagem}"></div>
+      <form th:action="@{/compra/form/save}" method="POST" th:object="${compraDto}">
+        <div class="form-group">
+          <label class="hide" for="idCompra">ID Compra</label> <input
+                  th:classappend="${#fields.hasErrors('idCompra')}? invalid"
+                  type="text" readonly id="idCompra" name="idCompra" th:field="*{idCompra}"
+                  required="required" class="form-control" th:value="${compra?.idCompra}" > <span
+                  th:errors="*{idCompra}"></span>
+          </div>
+
+        <div class="form-group">
+          <label class="hide" for="idCliente">ID Cliente</label> <input
+                th:classappend="${#fields.hasErrors('idCliente')}? invalid"
+                type="text" readonly id="idCliente" name="idCliente" th:field="*{idCliente}"
+                required="required" class="form-control" th:value="${compra?.idCliente}" > <span
+                th:errors="*{idCliente}"></span>
+        </div>
+
+        <div class="form-group">
+          <label class="hide" for="nomeCliente">Nome do Cliente</label> <input
+                th:classappend="${#fields.hasErrors('nomeCliente')}? invalid"
+                type="text" id="nomeCliente" name="nomeCliente" th:field="*{nomeCliente}"
+                required="required" class="form-control" th:value="${compra?.nomeCLiente}" > <span
+                th:errors="*{nomeCliente}"></span>
+        </div>
+
+        <div class="form-group">
+          <label class="hide" for="docPrincipalCliente">1º Documento do Cliente (CPF ou CNPJ)</label> <input
+                th:classappend="${#fields.hasErrors('docPrincipalCliente')}? invalid"
+                type="text" id="docPrincipalCliente" name="docPrincipalCliente" th:field="*{docPrincipalCliente}"
+                required="required" class="form-control" th:value="${compra?.docPrincipalCliente}" > <span
+                th:errors="*{docPrincipalCliente}"></span>
+        </div>
+
+        <div class="form-group">
+          <label class="hide" for="docExtraCliente">2º Documento do Cliente (RG ou IE)</label> <input
+                th:classappend="${#fields.hasErrors('docExtraCliente')}? invalid"
+                type="text" id="docExtraCliente" name="docExtraCliente" th:field="*{docExtraCliente}"
+                required="required" class="form-control" th:value="${compra?.docExtraCliente}" > <span
+                th:errors="*{docExtraCliente}"></span>
+        </div>
+
+        <!--se a função do th:selected for verdadeira ele deixa selecionado-->
+        <div class="form-group">
+          <label class="hide" for="tipoCliente">Tipo <p style="color: #990000; font-family: Inconsolata"><b>(SEMPRE VERIFIQUE SE ESTÁ CONDIZENTE)</b></p></label>
+          <select name="tipoCliente" class="custom-select">
+            <option th:each="tipo : ${tipoEnum}"
+                    th:value="${tipo}"
+                    th:text="${tipo}"
+                    th:selected="${tipo} == ${compra?.tipoCliente}"
+            />
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label class="hide" for="emailCliente">E-mail Cliente</label> <input
+                th:classappend="${#fields.hasErrors('emailCliente')}? invalid"
+                type="text" id="emailCliente" name="emailCliente" th:field="*{emailCliente}"
+                required="required" class="form-control" th:value="${compra?.emailCliente}" > <span
+                th:errors="*{emailCliente}"></span>
+        </div>
+
+        <div class="form-group">
+          <label class="hide" for="nome">ISBN</label> <input
+                th:classappend="${#fields.hasErrors('isbn')}? invalid"
+                type="text" id="isbn" name="isbn" th:field="*{isbn}"
+                required="required" class="form-control" th:value="${compra?.isbn}" > <span
+                th:errors="*{isbn}"></span>
+        </div>
+
+        <div class="form-group">
+          <label class="hide" for="qtdPedidaLivro">Quantidade Pedida do Livro</label> <input
+                th:classappend="${#fields.hasErrors('qtdPedidaLivro')}? invalid"
+                type="text" id="qtdPedidaLivro" name="qtdPedidaLivro" th:field="*{qtdPedidaLivro}"
+                required="required" class="form-control" th:value="${compra?.qtdPedidaLivro}" > <span
+                th:errors="*{qtdPedidaLivro}"></span>
+        </div>
+
+        <!--se a função do th:selected for verdadeira ele deixa selecionado-->
+        <div class="form-group">
+          <label class="hide" for="cpfFuncionario">Funcionario</label>
+          <select name="cpfFuncionario" class="custom-select">
+            <option th:each="funcionario : ${funcionarioList}"
+                    th:value="${funcionario?.cpf}"
+                    th:text="${funcionario?.nome}"
+                    th:selected="${funcionario.cpf} == ${compra?.cpfFuncionario}"
+            />
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label class="hide" for="nome">Data da Compra</label> <input
+                th:classappend="${#fields.hasErrors('dataCompra')}? invalid"
+                type="text" id="nome" readonly name="titulo" th:field="*{dataCompra}"
+                class="form-control" th:value="${compra?.dataCompra}" > <span
+                th:errors="*{dataCompra}"></span>
+        </div>
+
+        <div class="form-group">
+          <label class="hide" for="preco">Preço Total da Compra (Não preencher caso seja "Cadastro")</label> <input
+                th:classappend="${#fields.hasErrors('preco')}? invalid"
+                type="text" id="preco" name="preco" th:field="*{preco}"
+                class="form-control" th:value="${compra?.preco}" > <span
+                th:errors="*{preco}"></span>
+        </div>
+
+        <div class="form-buttons">
+          <a class="btn btn-secondary" href="/compra/todas">Voltar</a>
+          <button class="btn btn-success" value="Salvar">Cadastrar</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

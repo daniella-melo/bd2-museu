@@ -1,5 +1,6 @@
 package com.museu.model;
-import com.sun.istack.NotNull;
+
+import org.jetbrains.annotations.NotNull;
 
 import javax.persistence.*;
 import java.text.DecimalFormat;
@@ -10,19 +11,19 @@ public class Esculturas {
 
     @Id
     @NotNull
-    @Column(name = "NumObj2")
+    @Column(name = "numobj2")
     private int numObj2;
 
     @NotNull
-    @Column(name = "Material")
+    @Column(name = "material")
     private String material;
 
     @NotNull
-    @Column(name = "Altura")
+    @Column(name = "altura")
     private Double altura;
 
     @NotNull
-    @Column(name = "Peso")
+    @Column(name = "peso")
     private Double peso;
 
     public Esculturas(int numObj2, String material, Double altura, Double peso) {

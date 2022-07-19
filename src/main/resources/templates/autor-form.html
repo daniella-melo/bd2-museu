@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org">
+<head th:include="_template :: head"></head>
+<body>
+<header th:include="_template :: menu(page)"></header>
+
+<div class="container pt-2">
+  <div class="card">
+    <div class="card-body">
+      <h2 align="center"  style="background-color:#121212; color: white;
+            font-family: Inconsolata">Formulário de Autor</h2>
+
+      <div th:if="${mensagem}" th:text="${mensagem}"></div>
+      <form th:action="@{/autor/form/save}" method="POST" th:object="${autor}">
+        <div class="form-group">
+          <label class="hide" for="idAutor">ID Autor</label> <input
+                th:classappend="${#fields.hasErrors('idAutor')}? invalid"
+                type="text" readonly id="idAutor" name="idAutor" th:field="*{idAutor}"
+                required="required" class="form-control" th:value="${autor?.idAutor}" > <span
+                th:errors="*{idAutor}"></span>
+          </div>
+
+        <div class="form-group">
+          <label class="hide" for="nome">Nome</label> <input
+                th:classappend="${#fields.hasErrors('nome')}? invalid"
+                type="text" id="nome" name="titulo" th:field="*{nome}"
+                required="required" class="form-control" th:value="${autor?.nome}" > <span
+                th:errors="*{nome}"></span>
+        </div>
+
+        <div class="form-group">
+          <label class="hide" for="nacionalidade">Nacionalidade</label> <input
+                th:classappend="${#fields.hasErrors('nacionalidade')}? invalid"
+                type="text" id="nacionalidade" name="nacionalidade" th:field="*{nacionalidade}"
+                required="required" class="form-control" th:value="${autor?.nacionalidade}" > <span
+                th:errors="*{nacionalidade}"></span>
+        </div>
+
+        <div class="form-buttons">
+          <a class="btn btn-secondary" href="/autor/todos">Voltar</a>
+          <button class="btn btn-success" value="Salvar">Cadastrar</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

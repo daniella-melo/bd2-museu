@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org">
+<head th:include="_template :: head"></head>
+<body>
+<header th:include="_template :: menu(page)"></header>
+<h2 align="center"  style="background-color:#121212; color: white;
+font-family: Inconsolata">Lista de Funcionários: </h2>
+<form th:action="@{/funcionario/filtro}" method="POST" th:object="${filtroDto}">
+<div class="container pt-2" th:include="filtro :: menu(filtar)"></div>
+</form>
+<br>
+<table class="table table-striped" >
+  <thead>
+  <tr>
+    <th scope="col">CPF</th>
+    <th scope="col">Nome</th>
+    <th scope="col">Cargo</th>
+    <th scope="col">CPF Supervisor</th>
+    <th scope="col">Vendas Realizadas</th>
+    <th scope="col">Editar</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr th:each="funcionario : ${funcionarioList}">
+    <th scope="row" th:text="${funcionario.cpf}"></th>
+    <td th:text="${funcionario.nome}"></td>
+    <td th:text="${funcionario.cargo}"></td>
+    <td><a th:text="${funcionario.cpfSupervisor}"
+         th:href="@{/funcionario/supervisor/{id}(id=${funcionario.cpf})}"></a></td>
+    <td><a th:href="@{/funcionario/vendas/{id}(id=${funcionario.cpf})}">Ver Vendas</a></td>
+    <td><a class="btn btn-sm btn-primary"
+           th:href="@{/funcionario/editar/{id}(id=${funcionario.cpf})}">Editar</a>
+      <!--<a
+            class="btn btn-sm btn-danger"
+            th:href="@{/funcionario/deletar/{id}(id=${funcionario.cpf})}"
+            th:method="delete">Remover</a></td>-->
+  </tr>
+  </tbody>
+</table>
+</body>
+</html>
