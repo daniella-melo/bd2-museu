@@ -12,7 +12,7 @@ Java Database Connectivity), ao Thymeleaf mecanismo do Java para integração ba
 - Acessar a URL: localhost:8080/home/
 
 ## Sobre as consultas realizadas
-Todas as consultas realizadas se encontram na pasta scripts/
+Todas as consultas realizadas se encontram na pasta scripts/ e, no código, podem ser visualizadas nas classes de Repository em src/main/java/com/museu/repository
 
 ### Consulta 1
 <b>Objetivo: </b> Liste os objetos de arte comprados por tipo e por classe (emprestado ou próprio)
