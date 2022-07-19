@@ -23,13 +23,13 @@ public class ObjetosArteController {
     @Autowired
     private Consulta1Dto consulta1Dto;
 
-    @Bean
-    @RequestMapping("/consulta1")
-    public ModelAndView queryResult1(){
-        //List<Consulta1Dto> resultList = this.service.getByTipoEClasse();
-        List<Consulta1Dto> resultList = this.service.getConsulta1();
-        ModelAndView mv = new ModelAndView("consulta1");
-        mv.addObject("resultList", resultList);
-        return mv;
-    }
+    // @Bean
+    // @RequestMapping("/consulta1")
+    // public ModelAndView queryResult1(){
+    //     //List<Consulta1Dto> resultList = this.service.getByTipoEClasse();
+    //     List<Consulta1Dto> resultList = this.service.getConsulta1();
+    //     ModelAndView mv = new ModelAndView("consulta1");
+    //     mv.addObject("resultList", resultList);
+    //     return mv;
+    // }
 }

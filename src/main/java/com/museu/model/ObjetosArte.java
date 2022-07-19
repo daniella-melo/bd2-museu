@@ -1,6 +1,7 @@
 package com.museu.model;
 
 import com.sun.istack.NotNull;
+import java.math.BigDecimal;
 
 import javax.persistence.*;
 
@@ -49,9 +50,13 @@ public class ObjetosArte {
     @Column(name = "nomeart")
     private String nomeArt;
 
+    @NotNull
+    @Column(name = "custo")
+    private BigDecimal custo;
+
     public ObjetosArte(){}
 
-    public ObjetosArte(int numId, String titulo, String descricao, String anoCriacao, String periodoObj, String paisCultura, String estilo, String tipoObjArt, String catObjArt, String nomeArt) {
+    public ObjetosArte(int numId, String titulo, String descricao, String anoCriacao, String periodoObj, String paisCultura, String estilo, String tipoObjArt, String catObjArt, String nomeArt, BigDecimal custo) {
         this.numId = numId;
         this.titulo = titulo;
         this.descricao = descricao;
@@ -62,6 +67,7 @@ public class ObjetosArte {
         this.tipoObjArt = tipoObjArt;
         this.catObjArt = catObjArt;
         this.nomeArt = nomeArt;
+        this.custo = custo;
     }
 
     public int getNumId() {
@@ -142,5 +148,13 @@ public class ObjetosArte {
 
     public void setNomeArt(String nomeArt) {
         this.nomeArt = nomeArt;
+    }
+
+    public BigDecimal getCusto() {
+        return custo;
+    }
+
+    public void setCusto(BigDecimal custo) {
+        this.custo = custo;
     }
 }

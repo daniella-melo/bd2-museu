@@ -23,14 +23,14 @@ public class PermanentesController {
     @Autowired
     private Consulta3Dto consulta3Dto;
 
-    @Bean
-    @RequestMapping("/consulta3")
-    public ModelAndView queryResult3(){
-        List<Consulta3Dto> resultList = this.service.getComprasObjetos();
-        ModelAndView mv = new ModelAndView("consulta3");
-        mv.addObject("resultList", resultList);
-        return mv;
-    }
+    // @Bean
+    // @RequestMapping("/consulta3")
+    // public ModelAndView queryResult3(){
+    //     List<Consulta3Dto> resultList = this.service.getComprasObjetos();
+    //     ModelAndView mv = new ModelAndView("consulta3");
+    //     mv.addObject("resultList", resultList);
+    //     return mv;
+    // }
 
     @RequestMapping("/compras/{mes}{ano}")
     public ModelAndView viewPeriodDetails(@PathVariable("mes") int mes, @PathVariable("ano") int ano){

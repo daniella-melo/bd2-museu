@@ -20,12 +20,12 @@ public class ColecaoController {
     @Autowired
     private Consulta2Dto consulta2Dto;
 
-    @Bean
-    @RequestMapping("/consulta2")
-    public ModelAndView queryResult2(){
-        ModelAndView mv = new ModelAndView("consulta2");
-        List<Consulta2Dto> resultList = this.service.getConsulta2();
-        mv.addObject("resultList", resultList);
-        return mv;
-    }
+    // @Bean
+    // @RequestMapping("/consulta2")
+    // public ModelAndView queryResult2(){
+    //     ModelAndView mv = new ModelAndView("consulta2");
+    //     List<Consulta2Dto> resultList = this.service.getConsulta2();
+    //     mv.addObject("resultList", resultList);
+    //     return mv;
+    // }
 }

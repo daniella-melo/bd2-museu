@@ -26,17 +26,12 @@ public class Permanentes {
     @Column(name = "emexposicao")
     private Boolean emExposicao;
 
-    @NotNull
-    @Column(name = "custo")
-    private BigDecimal custo;
-
     public Permanentes(){}
 
-    public Permanentes(int numObj5, Timestamp dataAquisicao, Boolean emExposicao, BigDecimal custo) {
+    public Permanentes(int numObj5, Timestamp dataAquisicao, Boolean emExposicao) {
         this.numObj5 = numObj5;
         this.dataAquisicao = dataAquisicao;
         this.emExposicao = emExposicao;
-        this.custo = custo;
     }
 
     public int getNumObj5() {
@@ -63,11 +58,4 @@ public class Permanentes {
         this.emExposicao = emExposicao;
     }
 
-    public BigDecimal getCusto() {
-        return custo;
-    }
-
-    public void setCusto(BigDecimal custo) {
-        this.custo = custo;
-    }
 }
