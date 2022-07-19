@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org">
+<head th:include="_template :: head"></head>
+<body>
+<header th:include="_template :: menu(page)"></header>
+
+<div class="container pt-2">
+    <div class="card">
+        <div class="card-body">
+            <h2 align="center"  style="background-color:#121212; color: white;
+            font-family: Inconsolata">Formulário de Livro</h2>
+
+            <div th:if="${mensagem}" th:text="${mensagem}"></div>
+            <form th:action="@{/objeto/form/save}" method="POST" th:object="${objetosArteDto}">
+                <div class="form-group">
+                    <label class="hide" for="numId">ID do Objeto</label> <input
+                            th:classappend="${#fields.hasErrors('numId')}? invalid"
+                            type="text" readonly id="numId" name="numId" th:field="*{numId}"
+                            required="required" class="form-control" th:value="${objetosArteDto?.numId}" > <span
+                            th:errors="*{numId}"></span>
+                </div>
+
+                <div class="form-group">
+                    <label class="hide" for="titulo">Título</label> <input
+                        th:classappend="${#fields.hasErrors('titulo')}? invalid"
+                        type="text" id="titulo" name="titulo" th:field="*{titulo}"
+                        required="required" class="form-control" th:value="${objetosArteDto?.titulo}" > <span
+                        th:errors="*{titulo}"></span>
+                </div>
+
+                <div class="form-group">
+                    <label class="hide" for="descricao">Descrição</label> <input
+                        th:classappend="${#fields.hasErrors('titulo')}? invalid"
+                        type="text" id="descricao" name="descricao" th:field="*{descricao}"
+                        required="required" class="form-control" th:value="${objetosArteDto?.descricao}" > <span
+                        th:errors="*{descricao}"></span>
+                </div>
+
+                <div class="form-group">
+                    <label class="hide" for="anoCriacao">Ano de Criação</label> <input
+                        th:classappend="${#fields.hasErrors('anoCriacao')}? invalid"
+                        type="text" id="anoCriacao" name="anoCriacao" th:field="*{anoCriacao}"
+                        required="required" class="form-control" th:value="${objetosArteDto?.anoCriacao}" > <span
+                        th:errors="*{anoCriacao}"></span>
+                </div>
+
+                <div class="form-group">
+                    <label class="hide" for="periodoObj">Periodo</label> <input
+                        th:classappend="${#fields.hasErrors('periodoObj')}? invalid"
+                        type="text" id="periodoObj" name="periodoObj" th:field="*{periodoObj}"
+                        required="required" class="form-control" th:value="${objetosArteDto?.periodoObj}" > <span
+                        th:errors="*{periodoObj}"></span>
+                </div>
+
+                <div class="form-group">
+                    <label class="hide" for="paisCultura">País/Cultura</label> <input
+                        th:classappend="${#fields.hasErrors('paisCultura')}? invalid"
+                        type="text" id="paisCultura" name="paisCultura" th:field="*{paisCultura}"
+                        required="required" class="form-control" th:value="${objetosArteDto?.paisCultura}" > <span
+                        th:errors="*{paisCultura}"></span>
+                </div>
+
+                <div class="form-group">
+                    <label class="hide" for="estilo">Estilo</label> <input
+                        th:classappend="${#fields.hasErrors('estilo')}? invalid"
+                        type="text" id="estilo" name="estilo" th:field="*{estilo}"
+                        required="required" class="form-control" th:value="${objetosArteDto?.estilo}" > <span
+                        th:errors="*{estilo}"></span>
+                </div>
+
+                <div class="form-group">
+                    <label class="hide" for="tipoObjArt">Tipo</label> <input
+                        th:classappend="${#fields.hasErrors('tipoObjArt')}? invalid"
+                        type="text" id="tipoObjArt" name="tipoObjArt" th:field="*{tipoObjArt}"
+                        required="required" class="form-control" th:value="${objetosArteDto?.tipoObjArt}" > <span
+                        th:errors="*{tipoObjArt}"></span>
+                </div>
+
+                <div class="form-group">
+                    <label class="hide" for="catObjArt">Tipo</label> <input
+                        th:classappend="${#fields.hasErrors('catObjArt')}? invalid"
+                        type="text" id="catObjArt" name="catObjArt" th:field="*{catObjArt}"
+                        required="required" class="form-control" th:value="${objetosArteDto?.catObjArt}" > <span
+                        th:errors="*{catObjArt}"></span>
+                </div>
+
+                <!--ADICIONAR ATOR PELA RELAÇÃO ESCRITO POR-->
+                <div class="form-group">
+                    <label class="hide" for="nomeArt">Artista</label>
+                    <input th:classappend="${#fields.hasErrors('nomeArt')}? invalid"
+                           type="text" id="nomeArt" name="nomeArt" th:field="*{nomeArt}"
+                           required="required" class="form-control" th:value="${objetosArteDto?.nomeArt}"> <span
+                        th:errors="*{nomeArt}"></span>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label class="hide" for="preco">Custo</label> <input
+                        th:classappend="${#fields.hasErrors('preco')}? invalid"
+                        type="text" id="preco" name="preco" th:field="*{preco}"
+                        required="required" class="form-control" th:value="${objetosArteDto?.preco}" > <span
+                        th:errors="*{preco}"></span>
+                </div>
+
+                <!--se a função do th:selected for verdadeira ele deixa selecionado-->
+                <!-- <div class="form-group">
+                    <label class="hide" for="editora">Editora</label>
+                    <select name="cnpjEditora" class="custom-select">
+                        <option th:each="editora : ${editoraList}"
+                                th:value="${editora?.cnpj}"
+                                th:text="${editora.nome}"
+                                th:selected="${editora.cnpj} == ${objetosArteDto.cnpjEditora}"
+                        />
+                    </select>
+                </div>
+
+
+                <div class="form-group">
+                    <label class="hide" for="cpfFuncionario">Almoxarife</label>
+                    <select name="cpfFuncionario" class="custom-select">
+                        <option th:each="funcionario : ${funcionarioList}"
+                                th:value="${funcionario?.cpf}"
+                                th:text="${funcionario?.nome}"
+                        />
+                    </select>
+                </div> -->
+
+                <div class="form-buttons">
+                    <a class="btn btn-secondary" href="/livro/todos">Voltar</a>
+                    <button class="btn btn-success" value="Salvar">Cadastrar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
