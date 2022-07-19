@@ -6,24 +6,25 @@ import org.springframework.stereotype.Component;
 @Component
 public class Consulta1Dto {
 
-    private Long idObj;
+    private Integer idObj;
     private String titulo;
     private String tipo;
     private String classe;
 
+    public Consulta1Dto(){}
 
-    // public Consulta1Dto(int idObj, String titulo, String tipo, String classe) {
-    //    this.idObj = idObj;
-    //    this.titulo = titulo;
-    //    this.tipo = tipo;
-    //    this.classe = classe;
-    //}
+     public Consulta1Dto(Integer idObj, String titulo, String tipo, String classe) {
+        this.idObj = idObj;
+        this.titulo = titulo;
+        this.tipo = tipo;
+        this.classe = classe;
+    }
 
-    public Long getIdObj() {
+    public Integer getIdObj() {
         return idObj;
     }
 
-    public void setIdObj(Long idObj) {
+    public void setIdObj(Integer idObj) {
         this.idObj = idObj;
     }
 

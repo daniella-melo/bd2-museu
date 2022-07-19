@@ -12,12 +12,13 @@ public class Consulta3Dto {
     private String mes;
     private String ano;
 
-    //public Consulta3Dto(BigDecimal custoTotal, String mes, String ano, int numMes) {
-    //    this.custoTotal = custoTotal;
-    //     this.mes = mes;
-    //     this.ano = ano;
-    //    this.numMes = numMes;
-    // }
+    public Consulta3Dto(){}
+    public Consulta3Dto(BigDecimal custoTotal, String mes, String ano, int numMes) {
+        this.custototal = custoTotal;
+        this.mes = mes;
+        this.ano = ano;
+        this.nummes = numMes;
+     }
 
     public BigDecimal getCustoTotal() {
         return custototal;

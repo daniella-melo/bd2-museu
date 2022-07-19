@@ -6,6 +6,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import java.math.BigInteger;
 
 @Entity
 @Table(name="pinturas")
@@ -14,7 +15,7 @@ public class Pinturas {
     @Id
     @NotNull
     @Column(name = "numobj1")
-    private Long numObj1;
+    private int numObj1;
 
     @NotNull
     @Column(name = "tipotinta")
@@ -26,17 +27,17 @@ public class Pinturas {
 
     public Pinturas(){}
 
-    public Pinturas(Long numObj1, String tipoTinta, String suporte) {
+    public Pinturas(int numObj1, String tipoTinta, String suporte) {
         this.numObj1 = numObj1;
         this.tipoTinta = tipoTinta;
         this.suporte = suporte;
     }
 
-    public Long getNumObj1() {
+    public int getNumObj1() {
         return numObj1;
     }
 
-    public void setNumObj1(Long numObj1) {
+    public void setNumObj1(int numObj1) {
         this.numObj1 = numObj1;
     }
 

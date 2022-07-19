@@ -29,11 +29,11 @@ public class ObjetosArteService {
     //}
 
     public List<Consulta1Dto> getConsulta1(){
-        ArrayList<Consulta1Dto> consulta1Dto = this.configs.criarListaConsulta1Dto();
+        ArrayList<Consulta1Dto> consulta1Dto = new ArrayList<>();
         List<Object[]> result = this.repository.listByTipoEClasse();
         for (Object[] row : result) {
-            Consulta1Dto container = configs.criarObjetoConsulta1Dto();
-            container.setIdObj((Long) row[0]);
+            Consulta1Dto container = new Consulta1Dto();
+            container.setIdObj((int) row[0]);
             container.setTitulo((String) row[1]);
             container.setTipo((String) row[2]);
             container.setClasse((String) row[3]);

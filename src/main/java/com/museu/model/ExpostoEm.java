@@ -14,7 +14,7 @@ public class ExpostoEm {
     @Id
     @NotNull
     @Column(name = "numobj6")
-    private Long numObj6;
+    private int numObj6;
 
     @NotNull
     @Column(name = "nomeexpo")
@@ -22,16 +22,16 @@ public class ExpostoEm {
 
     public ExpostoEm(){}
 
-    public ExpostoEm(Long numObj6, String nomeExpo) {
+    public ExpostoEm(int numObj6, String nomeExpo) {
         this.numObj6 = numObj6;
         this.nomeExpo = nomeExpo;
     }
 
-    public Long getNumObj6() {
+    public int getNumObj6() {
         return numObj6;
     }
 
-    public void setNumObj6(Long numObj6) {
+    public void setNumObj6(int numObj6) {
         this.numObj6 = numObj6;
     }
 

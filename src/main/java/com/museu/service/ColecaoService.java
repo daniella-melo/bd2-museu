@@ -23,11 +23,11 @@ public class ColecaoService {
     private Configuracoes configs;
 
     public List<Consulta2Dto> getConsulta2(){
-        ArrayList<Consulta2Dto> consulta2Dto = this.configs.criarListaConsulta2Dto();
+        ArrayList<Consulta2Dto> consulta2Dto = new ArrayList<>();
         List<Object[]> result = this.repository.getEmprestimosPorColecao();
         for (Object[] row : result) {
-            Consulta2Dto container = configs.criarObjetoConsulta2Dto();
-            container.setQtdTotalObjetos((Long) row[0]);
+            Consulta2Dto container = new Consulta2Dto();
+            container.setQtdTotalObjetos((int) row[0]);
             container.setNomeCol((String) row[1]);
 
             consulta2Dto.add(container);

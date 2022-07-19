@@ -25,11 +25,11 @@ public class PermanentesService {
 
 
     public List<Consulta3Dto> getComprasObjetos(){
-        ArrayList<Consulta3Dto> consulta3Dto = configs.criarListaConsulta3Dto();
+        ArrayList<Consulta3Dto> consulta3Dto = new ArrayList<>();
         List<Object[]> result = this.repository.listCompras();
 
         for (Object[] row : result) {
-            Consulta3Dto container = configs.criarObjetoConsulta3Dto();
+            Consulta3Dto container = new Consulta3Dto();
             container.setCustoTotal((BigDecimal) row[0]);
             container.setNumMes((int) row[1]);
             container.setMes((String) row[2]);

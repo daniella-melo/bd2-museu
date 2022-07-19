@@ -16,7 +16,7 @@ public class Permanentes {
     @Id
     @NotNull
     @Column(name = "numobj5")
-    private Long numObj5;
+    private int numObj5;
 
     @NotNull
     @Column(name = "dataaquisicao")
@@ -32,18 +32,18 @@ public class Permanentes {
 
     public Permanentes(){}
 
-    public Permanentes(Long numObj5, Timestamp dataAquisicao, Boolean emExposicao, BigDecimal custo) {
+    public Permanentes(int numObj5, Timestamp dataAquisicao, Boolean emExposicao, BigDecimal custo) {
         this.numObj5 = numObj5;
         this.dataAquisicao = dataAquisicao;
         this.emExposicao = emExposicao;
         this.custo = custo;
     }
 
-    public Long getNumObj5() {
+    public int getNumObj5() {
         return numObj5;
     }
 
-    public void setNumObj5(Long numObj5) {
+    public void setNumObj5(int numObj5) {
         this.numObj5 = numObj5;
     }
 
