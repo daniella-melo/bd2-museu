@@ -20,7 +20,7 @@ full join permanentes pe on pe.numObj5 = oa.numId;
 
 
 -- 2. liste as colecoes com o maior numero de emprestimos por mes e por ano (maior quantidade de objetos emprestados?)
-select count(e.numObj4) qtd_total_objetos, co.nomecol from colecao co
+select count(e.numObj4) as qtd_total_objetos, co.nomecol from colecao co
 join emprestados e on e.nomecolpert = co.nomecol
 group by co.nomecol
 order by qtd_total_objetos desc;

@@ -1,27 +1,29 @@
 package com.museu.dtos;
 
+import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Component;
 
 @Component
 public class Consulta1Dto {
 
-    private int idObj;
+    private Long idObj;
     private String titulo;
     private String tipo;
     private String classe;
 
-    public Consulta1Dto(int idObj, String titulo, String tipo, String classe) {
-        this.idObj = idObj;
-        this.titulo = titulo;
-        this.tipo = tipo;
-        this.classe = classe;
-    }
 
-    public int getIdObj() {
+    // public Consulta1Dto(int idObj, String titulo, String tipo, String classe) {
+    //    this.idObj = idObj;
+    //    this.titulo = titulo;
+    //    this.tipo = tipo;
+    //    this.classe = classe;
+    //}
+
+    public Long getIdObj() {
         return idObj;
     }
 
-    public void setIdObj(int idObj) {
+    public void setIdObj(Long idObj) {
         this.idObj = idObj;
     }
 

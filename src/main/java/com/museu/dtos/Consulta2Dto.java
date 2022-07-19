@@ -5,19 +5,19 @@ import org.springframework.stereotype.Component;
 @Component
 public class Consulta2Dto {
 
-    private int qtdTotalObjetos;
+    private Long qtdTotalObjetos;
     private String nomeCol;
 
-    public Consulta2Dto(int qtdTotalObjetos, String nomeCol) {
-        this.qtdTotalObjetos = qtdTotalObjetos;
-        this.nomeCol = nomeCol;
-    }
+    //public Consulta2Dto(int qtdTotalObjetos, String nomeCol) {
+    //    this.qtdTotalObjetos = qtdTotalObjetos;
+    //    this.nomeCol = nomeCol;
+    //}
 
-    public int getQtdTotalObjetos() {
+    public Long getQtdTotalObjetos() {
         return qtdTotalObjetos;
     }
 
-    public void setQtdTotalObjetos(int qtdTotalObjetos) {
+    public void setQtdTotalObjetos(Long qtdTotalObjetos) {
         this.qtdTotalObjetos = qtdTotalObjetos;
     }
 

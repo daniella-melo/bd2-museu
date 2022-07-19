@@ -15,7 +15,7 @@ public class Emprestados {
     @Id
     @NotNull
     @Column(name = "numobj4")
-    private int numObj4;
+    private Long numObj4;
 
 
     @NotNull
@@ -28,20 +28,20 @@ public class Emprestados {
 
     @NotNull
     @Column(name = "nomecolpert")
-    private String nomeColPert;
+    private String nomecolpert;
 
-    public Emprestados(int numObj4, Timestamp dataEmprestimo, Timestamp dataDevolucao, String nomeColPert) {
+    public Emprestados(Long numObj4, Timestamp dataEmprestimo, Timestamp dataDevolucao, String nomeColPert) {
         this.numObj4 = numObj4;
         this.dataEmprestimo = dataEmprestimo;
         this.dataDevolucao = dataDevolucao;
-        this.nomeColPert = nomeColPert;
+        this.nomecolpert = nomecolpert;
     }
 
-    public int getNumObj4() {
+    public Long getNumObj4() {
         return numObj4;
     }
 
-    public void setNumObj4(int numObj4) {
+    public void setNumObj4(Long numObj4) {
         this.numObj4 = numObj4;
     }
 
@@ -62,10 +62,10 @@ public class Emprestados {
     }
 
     public String getNomeColPert() {
-        return nomeColPert;
+        return nomecolpert;
     }
 
-    public void setNomeColPert(String nomeColPert) {
-        this.nomeColPert = nomeColPert;
+    public void setNomeColPert(String nomecolpert) {
+        this.nomecolpert = nomecolpert;
     }
 }

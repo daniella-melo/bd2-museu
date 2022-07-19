@@ -11,22 +11,22 @@ public class Outros {
     @Id
     @NotNull
     @Column(name = "numobj3")
-    private int numObj3;
+    private Long numObj3;
 
     @NotNull
     @Column(name = "tipo")
     private String tipo;
 
-    public Outros(int numObj3, String tipo) {
+    public Outros(Long numObj3, String tipo) {
         this.numObj3 = numObj3;
         this.tipo = tipo;
     }
 
-    public int getNumObj3() {
+    public Long getNumObj3() {
         return numObj3;
     }
 
-    public void setNumObj3(int numObj3) {
+    public void setNumObj3(Long numObj3) {
         this.numObj3 = numObj3;
     }
 

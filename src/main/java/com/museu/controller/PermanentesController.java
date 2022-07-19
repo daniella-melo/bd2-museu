@@ -1,9 +1,11 @@
 package com.museu.controller;
 
+import com.museu.dtos.Consulta2Dto;
 import com.museu.dtos.Consulta3Dto;
 import com.museu.model.Permanentes;
 import com.museu.service.PermanentesService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -18,8 +20,12 @@ public class PermanentesController {
     @Autowired
     private PermanentesService service;
 
+    @Autowired
+    private Consulta3Dto consulta3Dto;
+
+    @Bean
     @RequestMapping("/consulta3")
-    public ModelAndView queryResult(){
+    public ModelAndView queryResult3(){
         List<Consulta3Dto> resultList = this.service.getComprasObjetos();
         ModelAndView mv = new ModelAndView("consulta3");
         mv.addObject("resultList", resultList);

@@ -19,6 +19,6 @@ public interface ObjetosArteRepository extends JpaRepository<ObjetosArte, Intege
             "END as classe\n" +
             "from ObjetosArte oa\n" +
             "full join Emprestados e on e.numObj4 = oa.numId\n" +
-            "full join Permanentes pe on pe.numObj5 = oa.numId;", nativeQuery = true)
+            "full join Permanentes pe on pe.numObj5 = oa.numId", nativeQuery = true)
     List<Consulta1Dto> listByTipoEClasse();
 }

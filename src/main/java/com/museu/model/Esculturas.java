@@ -11,7 +11,7 @@ public class Esculturas {
     @Id
     @NotNull
     @Column(name = "numobj2")
-    private int numObj2;
+    private Long numObj2;
 
     @NotNull
     @Column(name = "material")
@@ -25,18 +25,18 @@ public class Esculturas {
     @Column(name = "peso")
     private Double peso;
 
-    public Esculturas(int numObj2, String material, Double altura, Double peso) {
+    public Esculturas(Long numObj2, String material, Double altura, Double peso) {
         this.numObj2 = numObj2;
         this.material = material;
         this.altura = altura;
         this.peso = peso;
     }
 
-    public int getNumObj2() {
+    public Long getNumObj2() {
         return numObj2;
     }
 
-    public void setNumObj2(int numObj2) {
+    public void setNumObj2(Long numObj2) {
         this.numObj2 = numObj2;
     }
 

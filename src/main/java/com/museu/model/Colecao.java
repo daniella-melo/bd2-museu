@@ -14,7 +14,7 @@ public class Colecao {
     @Id
     @NotNull
     @Column(name = "nomecol")
-    private String nomeCol;
+    private String nomecol;
 
     @NotNull
     @Column(name = "descrcol")
@@ -36,8 +36,8 @@ public class Colecao {
     @Column(name = "tipocol")
     private String tipoCol;
 
-    public Colecao(String nomeCol, String descrCol, String endereco, String telefone, String pessoaContato, String tipoCol) {
-        this.nomeCol = nomeCol;
+    public Colecao(String nomecol, String descrCol, String endereco, String telefone, String pessoaContato, String tipoCol) {
+        this.nomecol = nomecol;
         this.descrCol = descrCol;
         this.endereco = endereco;
         this.telefone = telefone;
@@ -46,11 +46,11 @@ public class Colecao {
     }
 
     public String getNomeCol() {
-        return nomeCol;
+        return nomecol;
     }
 
-    public void setNomeCol(String nomeCol) {
-        this.nomeCol = nomeCol;
+    public void setNomeCol(String nomecol) {
+        this.nomecol = nomecol;
     }
 
     public String getDescrCol() {

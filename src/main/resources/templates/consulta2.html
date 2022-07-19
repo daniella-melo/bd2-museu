@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org">
+<head th:include="_template :: head"></head>
+<body>
+<header th:include="_template :: menu(page)"></header>
+<h2 align="center"  style="background-color:#121212; color: white;
+font-family: Inconsolata">Listagem das coleções com o maior número de empréstimos por mês e por ano </h2>
+<td><a class="btn btn-sm btn-primary"
+       th:href="@{/permanentes/graficoConsulta3/)}">Ver Gráfico</a></td>
+<table class="table table-striped" >
+    <thead>
+    <tr>
+        <th scope="col">Quantidade total de Objetos</th>
+        <th scope="col">Nome da Coleção</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="obj : ${resultList}">
+        <th scope="row" th:text="${resultList.qtdTotalObjetos}"></th>
+        <td th:text="${{resultList.nomeCol}"></td>
+        <td><a class="btn btn-sm btn-primary"
+               th:href="@{/permanentes/compras/{mes}/{ano} (mes=${resultList.numMes}),(ano=${resultList.ano})}">Ver Detalhes</a>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>
