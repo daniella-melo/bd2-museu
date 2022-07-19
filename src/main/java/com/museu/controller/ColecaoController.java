@@ -7,7 +7,11 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.ui.Model;
 
+import java.math.BigDecimal;
+import java.util.LinkedHashMap;
+import java.util.Map;
 import java.util.List;
 
 @Controller
@@ -20,12 +24,12 @@ public class ColecaoController {
     @Autowired
     private Consulta2Dto consulta2Dto;
 
-    // @Bean
-    // @RequestMapping("/consulta2")
-    // public ModelAndView queryResult2(){
-    //     ModelAndView mv = new ModelAndView("consulta2");
-    //     List<Consulta2Dto> resultList = this.service.getConsulta2();
-    //     mv.addObject("resultList", resultList);
-    //     return mv;
-    // }
+    @RequestMapping("/consulta2")
+    public ModelAndView queryResult2(){
+        ModelAndView mv = new ModelAndView("consulta2");
+        List<Consulta2Dto> resultList = this.service.getConsulta2();
+        mv.addObject("resultList", resultList);
+        return mv;
+    }
+
 }

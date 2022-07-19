@@ -4,7 +4,7 @@ SET search_path TO bd2, public;
 select oa.numId as id_objeto, oa.titulo, oa.tipoObjArt as tipo, 
 coalesce(cast(e.numObj4 as varchar), 'PERMANENTE-') ||
 coalesce(cast(pe.numObj5 as varchar), '-EMPRESTADO') as classe
-from objetos_arte oa
+from objetosarte oa
 full join emprestados e on e.numObj4 = oa.numId
 full join permanentes pe on pe.numObj5 = oa.numId;
 -- melhorada
@@ -14,7 +14,7 @@ CASE
 	WHEN pe.numObj5 IS NULL then 'EMPRESTADO'
 	ELSE 'OUTROS'
 END as classe
-from objetos_arte oa
+from objetosarte oa
 full join emprestados e on e.numObj4 = oa.numId
 full join permanentes pe on pe.numObj5 = oa.numId;
 
@@ -26,7 +26,7 @@ group by co.nomecol
 order by qtd_total_objetos desc;
 
 -- 3. listagem da compra de objetos de arte por mes e por ano
-select CAST(SUM(pe.custo) as money) as custo_total, EXTRACT(month from pe.dataaquisicao) as numMes,
+select CAST(SUM(oa.custo) as money) as custo_total, EXTRACT(month from pe.dataaquisicao) as numMes,
 CASE
 	WHEN EXTRACT(month from pe.dataaquisicao) = 1 THEN 'JANEIRO'
 	WHEN EXTRACT(month from pe.dataaquisicao) = 2 THEN 'FEVEREIRO'
@@ -43,6 +43,7 @@ CASE
 END as mes,
 EXTRACT(year from pe.dataaquisicao) as ano
 from permanentes pe
+inner join objetos_arte oa on oa.numid = pe.numobj5
 group by numMes, ano
 order by numMes, ano;
 
@@ -55,14 +56,29 @@ order by mes, ano;
 
 -- 4. listagem da quantidade de objetos emprestados por colecao, por mes e por ano (nao finalizada f)
 select co.nomeCol, count(e.numObj4) as qtd_obj_emprestados,
-EXTRACT(month from e.dataemprestimo) as mes,
+EXTRACT(month from e.dataemprestimo) as nummes,
+CASE
+	WHEN EXTRACT(month from e.dataemprestimo) = 1 THEN 'JANEIRO'
+	WHEN EXTRACT(month from e.dataemprestimo) = 2 THEN 'FEVEREIRO'
+	WHEN EXTRACT(month from e.dataemprestimo) = 3 THEN 'MARÇO'
+	WHEN EXTRACT(month from e.dataemprestimo) = 4 THEN 'ABRIL'
+	WHEN EXTRACT(month from e.dataemprestimo) = 5 THEN 'MAIO'
+	WHEN EXTRACT(month from e.dataemprestimo) = 6 THEN 'JUNHO'
+	WHEN EXTRACT(month from e.dataemprestimo) = 7 THEN 'JULHO'
+	WHEN EXTRACT(month from e.dataemprestimo) = 8 THEN 'AGOSTO'
+	WHEN EXTRACT(month from e.dataemprestimo) = 9 THEN 'SETEMBRO'
+	WHEN EXTRACT(month from e.dataemprestimo) = 10 THEN 'OUTUBRO'
+	WHEN EXTRACT(month from e.dataemprestimo) = 11 THEN 'NOVEMBRO'
+	WHEN EXTRACT(month from e.dataemprestimo) = 12 THEN 'DEZEMBRO'
+END as mes,
 EXTRACT(year from e.dataemprestimo) as ano
 from colecao co
 join emprestados e on e.nomeColPert = co.nomeCol
-group by co.nomeCol, mes, ano
-order by mes, ano;
+group by co.nomeCol, nummes, ano
+order by nummes, ano;
 
 -- CONSULTAS COMPLEMENTARES-----------------------------------
+-- complementar à 2--
 select *
 from permanentes pe
 WHERE EXTRACT(month from pe.dataaquisicao) = 5 and

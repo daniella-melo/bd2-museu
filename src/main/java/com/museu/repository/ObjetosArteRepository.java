@@ -15,8 +15,8 @@ public interface ObjetosArteRepository extends JpaRepository<ObjetosArte, Intege
             "CASE WHEN e.numObj4 IS NULL then 'PERMANENTE' " +
             "WHEN pe.numObj5 IS NULL then 'EMPRESTADO' " +
             "ELSE 'OUTROS' END as classe " +
-            "from bd2.ObjetosArte oa " +
-            "full join bd2.Emprestados e on e.numObj4 = oa.numId " +
-            "full join bd2.Permanentes pe on pe.numObj5 = oa.numId", nativeQuery = true)
+            "from museu.ObjetosArte oa " +
+            "full join museu.Emprestados e on e.numObj4 = oa.numId " +
+            "full join museu.Permanentes pe on pe.numObj5 = oa.numId", nativeQuery = true)
     List<Object[]> listByTipoEClasse();
 }

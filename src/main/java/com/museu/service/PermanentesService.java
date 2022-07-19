@@ -31,9 +31,9 @@ public class PermanentesService {
         for (Object[] row : result) {
             Consulta3Dto container = new Consulta3Dto();
             container.setCustoTotal((BigDecimal) row[0]);
-            container.setNumMes((int) row[1]);
+            container.setNumMes((BigDecimal) row[1]);
             container.setMes((String) row[2]);
-            container.setAno((String) row[3]);
+            container.setAno((BigDecimal) row[3]);
 
             consulta3Dto.add(container);
         }
@@ -42,7 +42,7 @@ public class PermanentesService {
 
     public List<Permanentes> getByPeriod(int mes, int ano){
         TypedQuery<Permanentes> query = em.createQuery(
-                "select * from Permanentes pe WHERE EXTRACT(month from pe.dataaquisicao) = " + mes +" and " +
+                "select * from museu.Permanentes pe WHERE EXTRACT(month from pe.dataaquisicao) = " + mes +" and " +
                         "EXTRACT(year from pe.dataaquisicao) = " + ano, Permanentes.class);
         return query.getResultList();
 

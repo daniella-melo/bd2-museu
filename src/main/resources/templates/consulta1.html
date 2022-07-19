@@ -16,10 +16,10 @@ font-family: Inconsolata">Relatório de Objetos por Tipo e Classe: </h2>
   </thead>
   <tbody>
   <tr th:each="obj : ${resultList}">
-    <th scope="row" th:text="${resultList.idObj}"></th>
-    <td th:text="${{resultList.titulo}"></td>
-    <td th:text="${{resultList.tipo}"></td>
-    <td th:text="${{resultList.classe}"></td>
+    <th scope="row" th:text="${obj.idObj}"></th>
+    <td th:text="${obj.titulo}"></td>
+    <td th:text="${obj.tipo}"></td>
+    <td th:text="${obj.classe}"></td>
   </tr>
   </tbody>
 </table>

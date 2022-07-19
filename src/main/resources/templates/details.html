@@ -17,9 +17,9 @@ font-family: Inconsolata">Detalhes de Compra de Objetos Permanentes no Período<
   </thead>
   <tbody>
   <tr th:each="obj : ${resultList}">
-    <th scope="row" th:text="${resultList.numObj5}"></th>
-    <td th:text="${{resultList.dataAquisicao}"></td>
-    <td th:text="${{resultList.custo}"></td>
+    <th scope="row" th:text="${obj.numObj5}"></th>
+    <td th:text="${{obj.dataAquisicao}"></td>
+    <td th:text="${{obj.custo}"></td>
   </tr>
   </tbody>
 </table>

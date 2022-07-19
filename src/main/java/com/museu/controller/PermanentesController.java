@@ -10,6 +10,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.ui.Model;
+
+import java.math.BigDecimal;
+import java.util.LinkedHashMap;
+import java.util.Map;
 
 import java.util.List;
 
@@ -23,14 +28,13 @@ public class PermanentesController {
     @Autowired
     private Consulta3Dto consulta3Dto;
 
-    // @Bean
-    // @RequestMapping("/consulta3")
-    // public ModelAndView queryResult3(){
-    //     List<Consulta3Dto> resultList = this.service.getComprasObjetos();
-    //     ModelAndView mv = new ModelAndView("consulta3");
-    //     mv.addObject("resultList", resultList);
-    //     return mv;
-    // }
+    @RequestMapping("/consulta3")
+    public ModelAndView queryResult3(){
+        List<Consulta3Dto> resultList = this.service.getComprasObjetos();
+        ModelAndView mv = new ModelAndView("consulta3");
+        mv.addObject("resultList", resultList);
+        return mv;
+    }
 
     @RequestMapping("/compras/{mes}{ano}")
     public ModelAndView viewPeriodDetails(@PathVariable("mes") int mes, @PathVariable("ano") int ano){
@@ -39,4 +43,19 @@ public class PermanentesController {
         mv.addObject("resultList", resultList);
         return mv;
     }
+
+    @RequestMapping("/graficoConsulta3")
+    public String graficoConsulta3(Model model){
+        
+        List<Consulta3Dto> resultList = this.service.getComprasObjetos();
+		Map<String, BigDecimal> consultMap = new LinkedHashMap<>();
+
+        for (Consulta3Dto consultaDto : resultList) {
+            consultMap.put(consultaDto.getMes(), consultaDto.getCustoTotal());
+        }
+		
+		model.addAttribute("surveyMap", consultMap);
+		return "graph-spending-month";
+    }
+
 }

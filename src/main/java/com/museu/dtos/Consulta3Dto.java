@@ -8,12 +8,12 @@ import java.math.BigDecimal;
 public class Consulta3Dto {
 
     private BigDecimal custototal;
-    private int nummes;
+    private BigDecimal nummes;
     private String mes;
-    private String ano;
+    private BigDecimal ano;
 
     public Consulta3Dto(){}
-    public Consulta3Dto(BigDecimal custoTotal, String mes, String ano, int numMes) {
+    public Consulta3Dto(BigDecimal custoTotal, String mes, BigDecimal ano, BigDecimal numMes) {
         this.custototal = custoTotal;
         this.mes = mes;
         this.ano = ano;
@@ -36,19 +36,19 @@ public class Consulta3Dto {
         this.mes = mes;
     }
 
-    public String getAno() {
+    public BigDecimal getAno() {
         return ano;
     }
 
-    public void setAno(String ano) {
+    public void setAno(BigDecimal ano) {
         this.ano = ano;
     }
 
-    public int getNumMes() {
+    public BigDecimal getNumMes() {
         return nummes;
     }
 
-    public void setNumMes(int nummes) {
+    public void setNumMes(BigDecimal nummes) {
         this.nummes = nummes;
     }
 }

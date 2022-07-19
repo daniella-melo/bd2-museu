@@ -13,10 +13,10 @@ import java.util.List;
 @Repository
 public interface PermanentesRepository extends JpaRepository<Permanentes, Integer> {
 
-    @Query(value = "select SUM(pe.custo) as custototal, EXTRACT(month from pe.dataaquisicao) as nummes, " +
+    @Query(value = "select SUM(oa.custo) as custototal, EXTRACT(month from pe.dataaquisicao) as nummes, " +
             "CASE WHEN EXTRACT(month from pe.dataaquisicao) = 1 THEN 'JANEIRO' " +
             "WHEN EXTRACT(month from pe.dataaquisicao) = 2 THEN 'FEVEREIRO' " +
-            "WHEN EXTRACT(month from pe.dataaquisicao) = 3 THEN 'MARÇO' " +
+            "WHEN EXTRACT(month from pe.dataaquisicao) = 3 THEN 'MARCO' " +
             "WHEN EXTRACT(month from pe.dataaquisicao) = 4 THEN 'ABRIL' " +
             "WHEN EXTRACT(month from pe.dataaquisicao) = 5 THEN 'MAIO' " +
             "WHEN EXTRACT(month from pe.dataaquisicao) = 6 THEN 'JUNHO' " +
@@ -28,9 +28,10 @@ public interface PermanentesRepository extends JpaRepository<Permanentes, Intege
             "WHEN EXTRACT(month from pe.dataaquisicao) = 12 THEN 'DEZEMBRO' " +
             "END as mes, " +
             "EXTRACT(year from pe.dataaquisicao) as ano " +
-            "from bd2.Permanentes pe " +
+            "from museu.Permanentes pe " +
+            "inner join museu.ObjetosArte oa on oa.numid = pe.numobj5 "+
             "group by nummes, ano " +
             "order by nummes, ano", nativeQuery = true)
-    List<Object[] > listCompras();
+    List<Object[]> listCompras();
 
 }

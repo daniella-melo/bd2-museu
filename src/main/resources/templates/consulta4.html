@@ -6,23 +6,24 @@
 <h2 align="center"  style="background-color:#121212; color: white;
 font-family: Inconsolata">Listagem da Compra de Objetos de Arte por Mês e Por ano </h2>
 <td><a class="btn btn-sm btn-primary"
-       th:href="@{/permanentes/graficoConsulta3}">Ver Gráfico</a></td>
+       th:href="@{/emprestados/graficoConsulta4}">Ver Gráfico</a></td>
 <table class="table table-striped" >
   <thead>
   <tr>
-    <th scope="col">CustoTotal</th>
+    <th scope="col">Nome da Coleção</th>
+    <th scope="col">Qtd Obj Emprestados</th>
     <th scope="col">Mês</th>
     <th scope="col">Ano</th>
-    <th scope="col">Detalhes do Período</th>
   </tr>
   </thead>
   <tbody>
   <tr th:each="obj : ${resultList}">
-    <th scope="row" th:text="${obj.custoTotal}"></th>
+    <th scope="row" th:text="${obj.nomecol}"></th>
+    <td th:text="${obj.qtdobjemprestados}"></td>
     <td th:text="${obj.mes}"></td>
     <td th:text="${obj.ano}"></td>
     <td><a class="btn btn-sm btn-primary"
-           th:href="@{/permanentes/compras/{mes}/{ano} (mes=${obj.numMes}),(ano=${obj.ano})}">Ver Detalhes</a>
+           th:href="@{/emprestados/compras/{mes}/{ano} (mes=${obj.numMes}),(ano=${obj.ano})}">Ver Detalhes</a>
   </tr>
   </tbody>
 </table>
