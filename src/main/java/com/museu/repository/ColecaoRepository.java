@@ -11,6 +11,8 @@ import java.util.List;
 @Repository
 public interface ColecaoRepository extends JpaRepository<Colecao, Integer> {
 
-    @Query(value = "select count(e.numObj4) as qtd_total_objetos, co.nomecol from Colecao co join Emprestados e on e.nomecolpert = co.nomecol group by co.nomecol order by count(e.numObj4) desc", nativeQuery = true)
-    List<Consulta2Dto> getEmprestimosPorColecao();
+    @Query(value = "select count(e.numObj4) as qtd_total_objetos, co.nomecol " +
+            "from bd2.Colecao co join bd2.Emprestados e on e.nomecolpert = co.nomecol " +
+            "group by co.nomecol order by count(e.numObj4) desc", nativeQuery = true)
+    List<Object[]> getEmprestimosPorColecao();
 }

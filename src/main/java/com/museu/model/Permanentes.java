@@ -30,6 +30,8 @@ public class Permanentes {
     @Column(name = "custo")
     private BigDecimal custo;
 
+    public Permanentes(){}
+
     public Permanentes(Long numObj5, Timestamp dataAquisicao, Boolean emExposicao, BigDecimal custo) {
         this.numObj5 = numObj5;
         this.dataAquisicao = dataAquisicao;

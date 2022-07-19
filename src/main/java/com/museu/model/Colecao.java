@@ -36,6 +36,8 @@ public class Colecao {
     @Column(name = "tipocol")
     private String tipoCol;
 
+    public Colecao(){}
+
     public Colecao(String nomecol, String descrCol, String endereco, String telefone, String pessoaContato, String tipoCol) {
         this.nomecol = nomecol;
         this.descrCol = descrCol;

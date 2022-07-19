@@ -49,6 +49,8 @@ public class ObjetosArte {
     @Column(name = "nomeart")
     private String nomeArt;
 
+    public ObjetosArte(){}
+
     public ObjetosArte(Long numId, String titulo, String descricao, String anoCriacao, String periodoObj, String paisCultura, String estilo, String tipoObjArt, String catObjArt, String nomeArt) {
         this.numId = numId;
         this.titulo = titulo;

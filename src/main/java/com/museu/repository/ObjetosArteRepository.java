@@ -11,14 +11,12 @@ import java.util.List;
 @Repository
 public interface ObjetosArteRepository extends JpaRepository<ObjetosArte, Integer> {
 
-    @Query(value = "select oa.numId as id_objeto, oa.titulo, oa.tipoObjArt as tipo, \n" +
-            "CASE\n" +
-            "\tWHEN e.numObj4 IS NULL then 'PERMANENTE'\n" +
-            "\tWHEN pe.numObj5 IS NULL then 'EMPRESTADO'\n" +
-            "\tELSE 'OUTROS'\n" +
-            "END as classe\n" +
-            "from ObjetosArte oa\n" +
-            "full join Emprestados e on e.numObj4 = oa.numId\n" +
-            "full join Permanentes pe on pe.numObj5 = oa.numId", nativeQuery = true)
-    List<Consulta1Dto> listByTipoEClasse();
+    @Query(value = "select oa.numId as id_objeto, oa.titulo, oa.tipoObjArt as tipo, " +
+            "CASE WHEN e.numObj4 IS NULL then 'PERMANENTE' " +
+            "WHEN pe.numObj5 IS NULL then 'EMPRESTADO' " +
+            "ELSE 'OUTROS' END as classe " +
+            "from bd2.ObjetosArte oa " +
+            "full join bd2.Emprestados e on e.numObj4 = oa.numId " +
+            "full join bd2.Permanentes pe on pe.numObj5 = oa.numId", nativeQuery = true)
+    List<Object[]> listByTipoEClasse();
 }

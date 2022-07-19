@@ -20,6 +20,8 @@ public class ExpostoEm {
     @Column(name = "nomeexpo")
     private String nomeExpo;
 
+    public ExpostoEm(){}
+
     public ExpostoEm(Long numObj6, String nomeExpo) {
         this.numObj6 = numObj6;
         this.nomeExpo = nomeExpo;

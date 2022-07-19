@@ -17,6 +17,8 @@ public class Outros {
     @Column(name = "tipo")
     private String tipo;
 
+    public Outros(){}
+
     public Outros(Long numObj3, String tipo) {
         this.numObj3 = numObj3;
         this.tipo = tipo;

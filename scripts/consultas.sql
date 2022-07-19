@@ -26,7 +26,7 @@ group by co.nomecol
 order by qtd_total_objetos desc;
 
 -- 3. listagem da compra de objetos de arte por mes e por ano
-select CAST(SUM(pe.custo) as money) as custo_total, EXTRACT(month from pe.dataaquisicao) as numMes,
+select CAST(SUM(pe.custo) as money) as custototal, EXTRACT(month from pe.dataaquisicao) as nummes,
 CASE
 	WHEN EXTRACT(month from pe.dataaquisicao) = 1 THEN 'JANEIRO'
 	WHEN EXTRACT(month from pe.dataaquisicao) = 2 THEN 'FEVEREIRO'
@@ -43,8 +43,8 @@ CASE
 END as mes,
 EXTRACT(year from pe.dataaquisicao) as ano
 from permanentes pe
-group by numMes, ano
-order by numMes, ano;
+group by nummes, ano
+order by nummes, ano;
 
 -- simplificada skdksdks
 select CAST(SUM(pe.custo) as money) as custo_total, EXTRACT(month from pe.dataaquisicao) as mes,

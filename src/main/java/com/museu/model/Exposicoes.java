@@ -24,6 +24,8 @@ public class Exposicoes {
     @Column(name = "datafinal")
     private Timestamp dataFinal;
 
+    public Exposicoes(){}
+
     public Exposicoes(String nomeExp, Timestamp dataInicio, Timestamp dataFinal) {
         this.nomeExp = nomeExp;
         this.dataInicio = dataInicio;

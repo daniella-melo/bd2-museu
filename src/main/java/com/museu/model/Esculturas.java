@@ -25,6 +25,8 @@ public class Esculturas {
     @Column(name = "peso")
     private Double peso;
 
+    public Esculturas(){}
+
     public Esculturas(Long numObj2, String material, Double altura, Double peso) {
         this.numObj2 = numObj2;
         this.material = material;

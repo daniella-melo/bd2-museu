@@ -24,6 +24,8 @@ public class Pinturas {
     @Column(name = "suporte")
     private String suporte;
 
+    public Pinturas(){}
+
     public Pinturas(Long numObj1, String tipoTinta, String suporte) {
         this.numObj1 = numObj1;
         this.tipoTinta = tipoTinta;

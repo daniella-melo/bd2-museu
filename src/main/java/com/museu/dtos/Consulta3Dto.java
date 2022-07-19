@@ -7,8 +7,8 @@ import java.math.BigDecimal;
 @Component
 public class Consulta3Dto {
 
-    private BigDecimal custoTotal;
-    private int numMes;
+    private BigDecimal custototal;
+    private int nummes;
     private String mes;
     private String ano;
 
@@ -20,11 +20,11 @@ public class Consulta3Dto {
     // }
 
     public BigDecimal getCustoTotal() {
-        return custoTotal;
+        return custototal;
     }
 
-    public void setCustoTotal(BigDecimal custoTotal) {
-        this.custoTotal = custoTotal;
+    public void setCustoTotal(BigDecimal custototal) {
+        this.custototal = custototal;
     }
 
     public String getMes() {
@@ -44,10 +44,10 @@ public class Consulta3Dto {
     }
 
     public int getNumMes() {
-        return numMes;
+        return nummes;
     }
 
-    public void setNumMes(int numMes) {
-        this.numMes = numMes;
+    public void setNumMes(int nummes) {
+        this.nummes = nummes;
     }
 }

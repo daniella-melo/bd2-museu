@@ -17,7 +17,6 @@ public class Emprestados {
     @Column(name = "numobj4")
     private Long numObj4;
 
-
     @NotNull
     @Column(name = "dataemprestimo")
     private Timestamp dataEmprestimo;
@@ -29,6 +28,8 @@ public class Emprestados {
     @NotNull
     @Column(name = "nomecolpert")
     private String nomecolpert;
+
+    public Emprestados(){}
 
     public Emprestados(Long numObj4, Timestamp dataEmprestimo, Timestamp dataDevolucao, String nomeColPert) {
         this.numObj4 = numObj4;
