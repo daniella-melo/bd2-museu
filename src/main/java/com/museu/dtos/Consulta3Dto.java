@@ -7,24 +7,25 @@ import java.math.BigDecimal;
 @Component
 public class Consulta3Dto {
 
-    private BigDecimal custoTotal;
-    private int numMes;
+    private BigDecimal custototal;
+    private int nummes;
     private String mes;
     private String ano;
 
-    //public Consulta3Dto(BigDecimal custoTotal, String mes, String ano, int numMes) {
-    //    this.custoTotal = custoTotal;
-    //     this.mes = mes;
-    //     this.ano = ano;
-    //    this.numMes = numMes;
-    // }
+    public Consulta3Dto(){}
+    public Consulta3Dto(BigDecimal custoTotal, String mes, String ano, int numMes) {
+        this.custototal = custoTotal;
+        this.mes = mes;
+        this.ano = ano;
+        this.nummes = numMes;
+     }
 
     public BigDecimal getCustoTotal() {
-        return custoTotal;
+        return custototal;
     }
 
-    public void setCustoTotal(BigDecimal custoTotal) {
-        this.custoTotal = custoTotal;
+    public void setCustoTotal(BigDecimal custototal) {
+        this.custototal = custototal;
     }
 
     public String getMes() {
@@ -44,10 +45,10 @@ public class Consulta3Dto {
     }
 
     public int getNumMes() {
-        return numMes;
+        return nummes;
     }
 
-    public void setNumMes(int numMes) {
-        this.numMes = numMes;
+    public void setNumMes(int nummes) {
+        this.nummes = nummes;
     }
 }

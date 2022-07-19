@@ -11,7 +11,7 @@ public class ObjetosArte {
     @Id
     @NotNull
     @Column(name = "numid")
-    private Long numId;
+    private int numId;
 
     @NotNull
     @Column(name = "titulo")
@@ -49,7 +49,9 @@ public class ObjetosArte {
     @Column(name = "nomeart")
     private String nomeArt;
 
-    public ObjetosArte(Long numId, String titulo, String descricao, String anoCriacao, String periodoObj, String paisCultura, String estilo, String tipoObjArt, String catObjArt, String nomeArt) {
+    public ObjetosArte(){}
+
+    public ObjetosArte(int numId, String titulo, String descricao, String anoCriacao, String periodoObj, String paisCultura, String estilo, String tipoObjArt, String catObjArt, String nomeArt) {
         this.numId = numId;
         this.titulo = titulo;
         this.descricao = descricao;
@@ -62,11 +64,11 @@ public class ObjetosArte {
         this.nomeArt = nomeArt;
     }
 
-    public Long getNumId() {
+    public int getNumId() {
         return numId;
     }
 
-    public void setNumId(Long numId) {
+    public void setNumId(int numId) {
         this.numId = numId;
     }
 

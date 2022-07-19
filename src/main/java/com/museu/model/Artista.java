@@ -34,6 +34,8 @@ public class Artista {
     @Column(name = "paisdeorigem")
     private String paisdeOrigem;
 
+    public Artista(){}
+
     public Artista(String nome, String descrArtista, Timestamp dataMorte, String estiloPrincipal, String periodo, String paisdeOrigem) {
         this.nome = nome;
         this.descrArtista = descrArtista;
