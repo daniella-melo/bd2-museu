@@ -16,6 +16,19 @@ Java Database Connectivity), ao JPA (Hibernate) e ao Thymeleaf mecanismo do Java
 - Rodar o comando: `mvn spring-boot:run`
 - Acessar a URL: localhost:8080/home/
 
+## Exemplos da aplicação rodando
+- Home
+![home](https://user-images.githubusercontent.com/35119030/180326250-f2f4b9ba-0ee9-4db1-ac35-8d6c61f06b31.png)
+
+- Consulta 1
+![Consulta1](https://user-images.githubusercontent.com/35119030/180326284-e61501b9-c00d-4aac-99da-47ff40e40774.png)
+
+- Gráfico 1 - Consulta 3
+![grafico-1-consulta-3](https://user-images.githubusercontent.com/35119030/180326302-de343784-240c-4206-a54d-f003a442a65a.png)
+
+- Gráfico 1 - Colsulta 4
+![grafico-1-consulta-4](https://user-images.githubusercontent.com/35119030/180326321-7490a315-85d0-4f02-8f68-fa3f08e6b0d5.png)
+
 ## Sobre as consultas realizadas
 Todas as consultas realizadas se encontram na pasta scripts/ e, no código, podem ser visualizadas nas classes de Repository em src/main/java/com/museu/repository
 
