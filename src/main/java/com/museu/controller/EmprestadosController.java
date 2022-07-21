@@ -1,7 +1,10 @@
 package com.museu.controller;
 
 import com.museu.dtos.Consulta4Dto;
+import com.museu.dtos.EmprestadosPorColecaoDto;
 import com.museu.model.Emprestados;
+import com.museu.dtos.EmprestadosPorMesDto;
+import com.museu.dtos.EmprestadosPorAnoDto;
 import com.museu.service.EmprestadosService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -37,19 +40,52 @@ public class EmprestadosController {
         return mv;
     }
 
-    @RequestMapping("/graficoConsulta4")
-    public String graficoConsulta2(Model model){
+    @RequestMapping("/graficoConsulta4/grafico-collection")
+    //Objetos emprestados por coleção
+    public String grafico1Consulta4(Model model){
         
-        List<Consulta4Dto> resultList = this.service.getListEmprestadosPorColecao();
-		Map<String, BigInteger> consultMap = new LinkedHashMap<>();
+        List<EmprestadosPorColecaoDto> resultList = this.service.getListTotalEmprestadosPorColecao();
+		Map<String, Integer> consultMap = new LinkedHashMap<>();
 
-        for (Consulta4Dto consultaDto : resultList) {
+        for (EmprestadosPorColecaoDto consultaDto : resultList) {
             
-            consultMap.put(consultaDto.getNomecol(), consultaDto.getQtdobjemprestados());
+            consultMap.put(consultaDto.getCol(), consultaDto.getQtdobjemprestados().intValue());
         }
 		
-		model.addAttribute("surveyMap", consultMap);
+		model.addAttribute("dataMap", consultMap);
+		return "graph-borrowed-objects-collection";
+    }
+
+    @RequestMapping("/graficoConsulta4/grafico-mes")
+    //Objetos emprestados por mês
+    public String grafico2Consulta4(Model model){
+        
+        List<EmprestadosPorMesDto> resultList = this.service.getListEmprestadosPorMes();
+		Map<String, BigInteger> consultMap = new LinkedHashMap<>();
+
+        for (EmprestadosPorMesDto consultaDto : resultList) {
+            
+            consultMap.put(consultaDto.getMes(), consultaDto.getQtdobjemprestados());
+        }
+		
+		model.addAttribute("dataMap", consultMap);
 		return "graph-borrowed-objects-month";
+    }
+
+    @RequestMapping("/graficoConsulta4/grafico-ano")
+    //Objetos emprestados por ano
+    public String grafico3Consulta4(Model model){
+        
+        List<EmprestadosPorAnoDto> resultList = this.service.getListEmprestadosPorAno();
+		Map<String, BigInteger> consultMap = new LinkedHashMap<>();
+
+        for (EmprestadosPorAnoDto consultaDto : resultList) {
+            
+            consultMap.put(consultaDto.getAno(), consultaDto.getQtdobjemprestados());
+        }
+		
+		model.addAttribute("dataMap", consultMap);
+		return "graph-borrowed-objects-year";
     }
 
     @RequestMapping("/compras/{mes}{ano}")

@@ -6,14 +6,17 @@
 <h2 align="center"  style="background-color:#121212; color: white;
 font-family: Inconsolata">Listagem da Compra de Objetos de Arte por Mês e Por ano </h2>
 <td><a class="btn btn-sm btn-primary"
-       th:href="@{/permanentes/graficoConsulta3}">Ver Gráfico</a></td>
+       th:href="@{/permanentes/graficoConsulta3/grafico-mes}">Ver Gráfico - Por Mês</a></td>
+       
+<td><a class="btn btn-sm btn-primary"
+        th:href="@{/permanentes/graficoConsulta3/grafico-ano}">Ver Gráfico - Por Ano</a></td>
+       
 <table class="table table-striped" >
   <thead>
   <tr>
     <th scope="col">CustoTotal</th>
     <th scope="col">Mês</th>
     <th scope="col">Ano</th>
-    <th scope="col">Detalhes do Período</th>
   </tr>
   </thead>
   <tbody>
@@ -21,8 +24,8 @@ font-family: Inconsolata">Listagem da Compra de Objetos de Arte por Mês e Por a
     <th scope="row" th:text="${obj.custoTotal}"></th>
     <td th:text="${obj.mes}"></td>
     <td th:text="${obj.ano}"></td>
-    <td><a class="btn btn-sm btn-primary"
-           th:href="@{/permanentes/compras/{mes}/{ano} (mes=${obj.numMes}),(ano=${obj.ano})}">Ver Detalhes</a>
+    <!-- <td><a class="btn btn-sm btn-primary"
+           th:href="@{/permanentes/compras/{mes}/{ano} (mes=${obj.numMes}),(ano=${obj.ano})}">Ver Detalhes</a> -->
   </tr>
   </tbody>
 </table>

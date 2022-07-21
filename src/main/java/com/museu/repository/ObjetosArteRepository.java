@@ -10,7 +10,8 @@ import java.util.List;
 
 @Repository
 public interface ObjetosArteRepository extends JpaRepository<ObjetosArte, Integer> {
-
+    
+    //lista de objetos de arte comprados por tipo e por classe (emprestado ou proprio)
     @Query(value = "select oa.numId as id_objeto, oa.titulo, oa.tipoObjArt as tipo, " +
             "CASE WHEN e.numObj4 IS NULL then 'PERMANENTE' " +
             "WHEN pe.numObj5 IS NULL then 'EMPRESTADO' " +

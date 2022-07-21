@@ -2,6 +2,9 @@ package com.museu.controller;
 
 import com.museu.dtos.Consulta2Dto;
 import com.museu.dtos.Consulta3Dto;
+import com.museu.dtos.ObjCompradosPorAnoDto;
+import com.museu.dtos.ObjCompradosPorMesDto;
+
 import com.museu.model.Permanentes;
 import com.museu.service.PermanentesService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -44,18 +47,36 @@ public class PermanentesController {
         return mv;
     }
 
-    @RequestMapping("/graficoConsulta3")
-    public String graficoConsulta3(Model model){
-        
-        List<Consulta3Dto> resultList = this.service.getComprasObjetos();
+    @RequestMapping("/graficoConsulta3/grafico-mes")
+    //Gastos objetos por mes
+    public String grafico1Consulta3(Model model){
+
+        List<ObjCompradosPorMesDto> resultList = this.service.getListEmprestadosPorMes();
 		Map<String, BigDecimal> consultMap = new LinkedHashMap<>();
 
-        for (Consulta3Dto consultaDto : resultList) {
+        for (ObjCompradosPorMesDto consultaDto : resultList) {
+
             consultMap.put(consultaDto.getMes(), consultaDto.getCustoTotal());
         }
 		
-		model.addAttribute("surveyMap", consultMap);
+		model.addAttribute("dataMap", consultMap);
 		return "graph-spending-month";
+    }
+
+    @RequestMapping("/graficoConsulta3/grafico-ano")
+    //Gastos objetos por ano
+    public String grafico2Consulta3(Model model){
+
+        List<ObjCompradosPorAnoDto> resultList = this.service.getListEmprestadosPorAno();
+		Map<String, BigDecimal> consultMap = new LinkedHashMap<>();
+
+        for (ObjCompradosPorAnoDto consultaDto : resultList) {
+
+            consultMap.put(consultaDto.getAno(), consultaDto.getCustoTotal());
+        }
+		
+		model.addAttribute("dataMap", consultMap);
+		return "graph-spending-year";
     }
 
 }

@@ -8,7 +8,7 @@
     <div class="card">
         <div class="card-body">
             <h2 align="center"  style="background-color:#121212; color: white;
-            font-family: Inconsolata">Formulário de Livro</h2>
+            font-family: Inconsolata">Formulário de Objeto</h2>
 
             <div th:if="${mensagem}" th:text="${mensagem}"></div>
             <form th:action="@{/objeto/form/save}" method="POST" th:object="${objetosArteDto}">
@@ -30,7 +30,7 @@
 
                 <div class="form-group">
                     <label class="hide" for="descricao">Descrição</label> <input
-                        th:classappend="${#fields.hasErrors('titulo')}? invalid"
+                        th:classappend="${#fields.hasErrors('descricao')}? invalid"
                         type="text" id="descricao" name="descricao" th:field="*{descricao}"
                         required="required" class="form-control" th:value="${objetosArteDto?.descricao}" > <span
                         th:errors="*{descricao}"></span>

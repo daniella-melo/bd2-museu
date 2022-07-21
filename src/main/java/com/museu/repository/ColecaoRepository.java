@@ -11,6 +11,7 @@ import java.util.List;
 @Repository
 public interface ColecaoRepository extends JpaRepository<Colecao, Integer> {
 
+    //listagem das colecoes com o maior numero de emprestimos por mes e por ano (maior quantidade de objetos emprestados)
     @Query(value = "select CAST(count(e.numObj4) as int) as qtd_total_objetos, co.nomecol " +
             "from museu.Colecao co join museu.Emprestados e on e.nomecolpert = co.nomecol " +
             "group by co.nomecol order by count(e.numObj4) desc", nativeQuery = true)
