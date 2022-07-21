@@ -3,12 +3,17 @@ Repositório para o projeto de um museu da disciplina de Banco de Dados 2 (2022)
 
 ## Framework
 Utilizamos o framework SpringBoot para construir um projeto Maven (que uma ferramenta de gerenciamento de projetos de software), adicionando dependência ao SGBD Postresql, à API do JDBC (
-Java Database Connectivity), ao Thymeleaf mecanismo do Java para integração back e front-end.
+Java Database Connectivity), ao JPA (Hibernate) e ao Thymeleaf mecanismo do Java para integração back e front-end.
+
+## Organização do Código e Integração
+   Resumidamente, primeiro configuramos os acessos ao banco no arquivo `../src/resources/application.properties` e as dependências do Spring-Boot no arquivo `pom.xml`. Em seguida, modelamos as Models em `../src/main/java/com/museu/model/` que consistem em representações das tabelas do banco. Em seguida, as consultas no postresql estão concentradas nas classes do pacote de Repository (`../src/main/java/com/museu/repository/`), dessa forma elas não ficam espalhadas em diversos pontos do código, facilitando a manutenção. 
+   </br>É tarefa das classes do pacote Service chamar os métodos dos repositories e manipular o retorno para o que for necessário, no nosso caso mapeá-las para as chamadas Dtos (`../src/main/java/com/museu/dtos/`) as quais podem ser definidas como entidades para suportar as projeções feitas nas consultas sql. Nesse ponto da aplicação entram as Controllers com a responsabilidade de, dependendo da url acessada da aplicação, realizar a ação de chamar os métodos da classes services e passar os objetos formados para as views em html (`../src/main/resources/templates/`)
 
 ## Para usar a aplicação
 - Certifique-se que seu arquivo ../src/resources/application.properties está coerente com sua configuração do Postresql para a aplicação do museu
 - Rodar scripts/Creates.sql e scripts/Inserts.sql
-- Rodar .exe em <ADICIONAR CAMINHO AO .EXE>
+- Abrir a pasta do arquivo no terminal
+- Rodar o comando: `mvn spring-boot:run`
 - Acessar a URL: localhost:8080/home/
 
 ## Sobre as consultas realizadas
@@ -51,3 +56,36 @@ Todas as consultas realizadas se encontram na pasta scripts/ e, no código, pode
 
 
 ## Possibilidades de Melhorias Gerais
+Após a apresentação do trabalho, percebemos que interpretamos errado o tipo de gráfico pedido referente às consultas 3 e 4, pois como agrupamos por mês e por ano, ficaria poluido um gráfico nesse molde devido à alta densidade de anos, como mostramos no esboço abaixo referente à consulta 3:
+![image](https://user-images.githubusercontent.com/47679110/180258006-224a9348-fe09-46ec-b56a-edcb5da5c7ef.png)
+
+</br> Porém, se o grupo tivesse modelado a seguinte consulta e a utilizado para gerar um gráfico, ele ficaria mais homogêneo e fácil de ser lido
+```sql
+select CAST(SUM(oa.custo) as money) as custo_total, EXTRACT(month from pe.dataaquisicao) as mes,
+EXTRACT(year from pe.dataaquisicao) as ano
+from permanentes pe
+inner join objetos_arte oa on oa.numid = pe.numobj5
+group by mes, ano
+order by ano, mes; 
+```
+OBS: A consulta acima retorna 70 tuplas nos seguinte molde:</br>
+![image](https://user-images.githubusercontent.com/47679110/180255560-fec0ebf5-0dee-41c7-a390-5dbd1da4c94b.png)
+
+</br>Esse seria um esboço do gráfico passível de ser modelado a partir desses dados:</br>
+![image](https://user-images.githubusercontent.com/47679110/180258132-e408a77d-4401-4648-9c07-95ad957cc1f4.png)
+
+
+A mesma ideia vale para a consulta 4, onde poderiamos ter usado a seguinte consulta para modelar um gráfico:
+```sql
+select co.nomeCol as nome_colecao, count(e.numObj4) as qtd_obj_emprestados,
+EXTRACT(month from e.dataemprestimo) as mes,
+EXTRACT(year from e.dataemprestimo) as ano
+from colecao co
+join emprestados e on e.nomeColPert = co.nomeCol
+group by co.nomeCol, mes, ano
+order by ano, mes;
+```
+OBS: A consulta acima retorna 74 tuplas nos seguinte molde:</br>
+![image](https://user-images.githubusercontent.com/47679110/180258997-adee9e01-a0f5-40b7-8328-e2ea681dbe6e.png)
+
+</br> Outras possibilidades de melhoria incluem expandir a apliação, oferecendo mais funcionalidades, como cadastros, formulários para atualização de dados, exclusão de itens, etc.
