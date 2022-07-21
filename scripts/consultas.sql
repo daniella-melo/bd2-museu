@@ -2,13 +2,6 @@ SET search_path TO bd2, public;
 
 -- 1 lista objetos de arte comprados por tipo e por classe (emprestado ou proprio)
 select oa.numId as id_objeto, oa.titulo, oa.tipoObjArt as tipo, 
-coalesce(cast(e.numObj4 as varchar), 'PERMANENTE-') ||
-coalesce(cast(pe.numObj5 as varchar), '-EMPRESTADO') as classe
-from objetosarte oa
-full join emprestados e on e.numObj4 = oa.numId
-full join permanentes pe on pe.numObj5 = oa.numId;
--- melhorada
-select oa.numId as id_objeto, oa.titulo, oa.tipoObjArt as tipo, 
 CASE
 	WHEN e.numObj4 IS NULL then 'PERMANENTE'
 	WHEN pe.numObj5 IS NULL then 'EMPRESTADO'
@@ -47,7 +40,7 @@ inner join objetos_arte oa on oa.numid = pe.numobj5
 group by numMes, ano
 order by numMes, ano;
 
--- simplificada skdksdks
+-- simplificada
 select CAST(SUM(pe.custo) as money) as custo_total, EXTRACT(month from pe.dataaquisicao) as mes,
 EXTRACT(year from pe.dataaquisicao) as ano
 from permanentes pe
